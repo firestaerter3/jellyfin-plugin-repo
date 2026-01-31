@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.0.1.0",
+        "changelog": "Fix Test Connection and Sync buttons not working in config UI",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.0.1.0/jellyfin-xtream-library_1.0.1.0.zip",
+        "checksum": "f1df85921840bbaecf9f86fa7604a2ef",
+        "timestamp": "2026-01-31T13:00:00Z"
+      },
+      {
         "version": "1.0.0.0",
         "changelog": "Initial release - Movies/VOD sync, Series sync with Season/Episode structure, automatic library scan, orphan cleanup",
         "targetAbi": "10.11.0.0",
