@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.22.1.0",
+        "changelog": "Fix deletion count in CleanLibraries - now counts actual STRM files instead of subdirectories",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.22.1.0/jellyfin-xtream-library_1.22.1.0.zip",
+        "checksum": "2b9e3019bca28180b80e2e92a6d9fedc",
+        "timestamp": "2026-02-02T12:30:00Z"
+      },
+      {
         "version": "1.22.0.0",
         "changelog": "Performance optimizations - pre-fetch media info, configurable metadata parallelism, smart skip with directory caching",
         "targetAbi": "10.11.0.0",
