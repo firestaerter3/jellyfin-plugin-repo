@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.12.0.0",
+        "changelog": "Download artwork (posters/fanart) from provider for content that couldn't be matched to TMDb/TVDb",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.12.0.0/jellyfin-xtream-library_1.12.0.0.zip",
+        "checksum": "a53a543b70b4bb0d17a1b3bff9c57233",
+        "timestamp": "2026-02-01T16:25:00Z"
+      },
+      {
         "version": "1.11.0.0",
         "changelog": "Add Cancel Sync button - stop sync mid-operation by clicking the button",
         "targetAbi": "10.11.0.0",
