@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.22.0.0",
+        "changelog": "Performance optimizations - pre-fetch media info, configurable metadata parallelism, smart skip with directory caching",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.22.0.0/jellyfin-xtream-library_1.22.0.0.zip",
+        "checksum": "315d622ab69faa162b95441d05532873",
+        "timestamp": "2026-02-02T12:00:00Z"
+      },
+      {
         "version": "1.19.0.0",
         "changelog": "Parallel category fetching - collection phase now fetches all categories concurrently for 5-10x faster sync startup",
         "targetAbi": "10.11.0.0",
