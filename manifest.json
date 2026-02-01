@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.14.0.0",
+        "changelog": "Scheduled sync improvements - choose Interval or Daily mode with real-time progress reporting",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.14.0.0/jellyfin-xtream-library_1.14.0.0.zip",
+        "checksum": "aaf61ae32fc5254af61a83622909d5fe",
+        "timestamp": "2026-02-01T17:00:00Z"
+      },
+      {
         "version": "1.13.0.0",
         "changelog": "Add season posters and episode thumbnails for unmatched series content",
         "targetAbi": "10.11.0.0",
