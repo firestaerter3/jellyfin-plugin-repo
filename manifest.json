@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.13.0.0",
+        "changelog": "Add season posters and episode thumbnails for unmatched series content",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.13.0.0/jellyfin-xtream-library_1.13.0.0.zip",
+        "checksum": "5da2605812e3ae4444bcc810ba0443a4",
+        "timestamp": "2026-02-01T16:35:00Z"
+      },
+      {
         "version": "1.12.0.0",
         "changelog": "Download artwork (posters/fanart) from provider for content that couldn't be matched to TMDb/TVDb",
         "targetAbi": "10.11.0.0",
