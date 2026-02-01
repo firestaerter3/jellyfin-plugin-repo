@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.17.0.0",
+        "changelog": "Proactive media info - fetch resolution/codec/audio during sync and write NFO sidecar files",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.17.0.0/jellyfin-xtream-library_1.17.0.0.zip",
+        "checksum": "12270a90dcb28bac1e12d6419e0f5e53",
+        "timestamp": "2026-02-01T19:00:00Z"
+      },
+      {
         "version": "1.16.0.0",
         "changelog": "Improved folder mode UI - visual folder creation with category checkboxes instead of typing IDs",
         "targetAbi": "10.11.0.0",
