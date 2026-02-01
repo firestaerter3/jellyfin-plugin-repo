@@ -42,6 +42,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.6.0.0",
+        "changelog": "Add manual folder ID overrides for TMDb/TVDb metadata matching - force specific provider IDs for content that doesn't match automatically",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.6.0.0/jellyfin-xtream-library_1.6.0.0.zip",
+        "checksum": "5e8784cc3e31e663c904f7d4f95fd5e0",
+        "timestamp": "2026-02-01T12:45:00Z"
+      },
+      {
         "version": "1.5.0.0",
         "changelog": "Strip language tags (| NL |, [EN], etc.) for better TMDB/TVDb metadata matching",
         "targetAbi": "10.11.0.0",
