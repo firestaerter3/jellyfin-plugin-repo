@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.5.0.0",
+        "changelog": "Strip language tags (| NL |, [EN], etc.) for better TMDB/TVDb metadata matching",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.5.0.0/jellyfin-xtream-library_1.5.0.0.zip",
+        "checksum": "4041c7b2065a61947f1efa26e123bd1e",
+        "timestamp": "2026-02-01T07:05:00Z"
+      },
+      {
         "version": "1.4.0.0",
         "changelog": "Parallel sync (3x faster) with smart skip - skips API calls for existing series",
         "targetAbi": "10.11.0.0",
