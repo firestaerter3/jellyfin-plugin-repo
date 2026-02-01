@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.15.0.0",
+        "changelog": "Custom folder mappings - organize Movies/Series into subfolders by category (e.g., Movies/Kids)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.15.0.0/jellyfin-xtream-library_1.15.0.0.zip",
+        "checksum": "74a1df1e88bd69718112a001ac2e493a",
+        "timestamp": "2026-02-01T17:30:00Z"
+      },
+      {
         "version": "1.14.0.0",
         "changelog": "Scheduled sync improvements - choose Interval or Daily mode with real-time progress reporting",
         "targetAbi": "10.11.0.0",
