@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.25.1.0",
+        "changelog": "Better error messages for memory issues - status shows 'Out of Memory' or 'Server Restarted' with suggestion to reduce batch size",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.25.1.0/jellyfin-xtream-library_1.25.1.0.zip",
+        "checksum": "5894689490377bcf76aa11b3926c1b49",
+        "timestamp": "2026-02-02T16:00:00Z"
+      },
+      {
         "version": "1.25.0.0",
         "changelog": "Category batch processing - reduces memory usage for large libraries by processing categories in batches of 10 (configurable)",
         "targetAbi": "10.11.0.0",
