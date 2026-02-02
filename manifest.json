@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.26.1.0",
+        "changelog": "Fix HttpClient disposal during background sync - prevents ObjectDisposedException when plugin reloads",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.26.1.0/jellyfin-xtream-library_1.26.1.0.zip",
+        "checksum": "6b6d877ff1e4a4643588b553138cc9e2",
+        "timestamp": "2026-02-02T17:10:00Z"
+      },
+      {
         "version": "1.26.0.0",
         "changelog": "Provider TMDB ID support - uses TMDB IDs from Xtream provider for direct matching instead of name lookups",
         "targetAbi": "10.11.0.0",
