@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.24.1.0",
+        "changelog": "Fix UI for background sync - proper progress polling and status display after completion",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.24.1.0/jellyfin-xtream-library_1.24.1.0.zip",
+        "checksum": "ab5af210fdeb39b0f5031e92d7fe7b99",
+        "timestamp": "2026-02-02T14:30:00Z"
+      },
+      {
         "version": "1.24.0.0",
         "changelog": "Background sync - browser disconnect won't cancel sync, runs independently in background",
         "targetAbi": "10.11.0.0",
