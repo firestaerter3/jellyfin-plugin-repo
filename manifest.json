@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.23.1.0",
+        "changelog": "Fetch VOD info only for new movies - removes wasteful pre-fetch phase, much faster for existing libraries",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.23.1.0/jellyfin-xtream-library_1.23.1.0.zip",
+        "checksum": "691f7ff3ed6e539594e152a0ed227314",
+        "timestamp": "2026-02-02T13:30:00Z"
+      },
+      {
         "version": "1.23.0.0",
         "changelog": "Progress tracking for media info pre-fetch phase - shows items processed during 'Fetching media info'",
         "targetAbi": "10.11.0.0",
