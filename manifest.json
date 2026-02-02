@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.23.0.0",
+        "changelog": "Progress tracking for media info pre-fetch phase - shows items processed during 'Fetching media info'",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.23.0.0/jellyfin-xtream-library_1.23.0.0.zip",
+        "checksum": "a25655443a833f199642ca96880a423d",
+        "timestamp": "2026-02-02T13:15:00Z"
+      },
+      {
         "version": "1.22.1.0",
         "changelog": "Fix deletion count in CleanLibraries - now counts actual STRM files instead of subdirectories",
         "targetAbi": "10.11.0.0",
