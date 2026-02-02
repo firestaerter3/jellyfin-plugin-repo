@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.26.2.0",
+        "changelog": "Skip API calls for existing movies - dramatically faster subsequent syncs",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.26.2.0/jellyfin-xtream-library_1.26.2.0.zip",
+        "checksum": "c75657d3c6ff5884072acd79c76bf7b1",
+        "timestamp": "2026-02-02T17:20:00Z"
+      },
+      {
         "version": "1.26.1.0",
         "changelog": "Fix HttpClient disposal during background sync - prevents ObjectDisposedException when plugin reloads",
         "targetAbi": "10.11.0.0",
