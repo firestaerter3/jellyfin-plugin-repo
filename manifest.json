@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.27.1.0",
+        "changelog": "Fix series skip logic - remove fragile cache optimization for series, keep reliable movies optimization",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.27.1.0/jellyfin-xtream-library_1.27.1.0.zip",
+        "checksum": "6e8866cecb894e6cbca2904d4595f9e2",
+        "timestamp": "2026-02-02T18:15:00Z"
+      },
+      {
         "version": "1.27.0.0",
         "changelog": "Skip API calls for existing content - pre-scan folders for O(1) cache lookup, dramatically faster subsequent syncs for both movies and series",
         "targetAbi": "10.11.0.0",
