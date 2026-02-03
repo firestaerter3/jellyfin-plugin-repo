@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.28.4.0",
+        "changelog": "Smart 404 retry (finds series by name when ID changes) and progress counter fix",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.28.4.0/jellyfin-xtream-library_1.28.4.0.zip",
+        "checksum": "999c98d90bc0d88815686f782055db0c",
+        "timestamp": "2026-02-03T21:30:00Z"
+      },
+      {
         "version": "1.28.1.0",
         "changelog": "Handle empty array for VOD info field - fixes JSON deserialization error with some providers",
         "targetAbi": "10.11.0.0",
