@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.3.0",
+        "changelog": "Fix files reappearing after Clean Libraries: suppress sync for 5 minutes after cleaning to prevent scheduler from immediately restarting",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.3.0/jellyfin-xtream-library_1.30.3.0.zip",
+        "checksum": "991583ee826d4cfde8f0dfd9be3b3331",
+        "timestamp": "2026-02-05T01:30:00Z"
+      },
+      {
         "version": "1.30.2.0",
         "changelog": "Fix files reappearing after Clean Libraries: cancel running sync and wait for it to stop before deleting",
         "targetAbi": "10.11.0.0",
