@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.28.9.0",
+        "changelog": "Code review fixes: password masking, new episode detection, thread safety, performance optimizations, error handling, accessibility, 194 tests passing",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.28.9.0/jellyfin-xtream-library_1.28.9.0.zip",
+        "checksum": "a029ce064feda23da5abd1dbfcdafc3d",
+        "timestamp": "2026-02-04T23:30:00Z"
+      },
+      {
         "version": "1.28.8.0",
         "changelog": "Fix dirty titles in movie NFO files - pass sanitized name to NFO writer instead of raw stream name with | NL | prefixes",
         "targetAbi": "10.11.0.0",
