@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.28.8.0",
+        "changelog": "Fix dirty titles in movie NFO files - pass sanitized name to NFO writer instead of raw stream name with | NL | prefixes",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.28.8.0/jellyfin-xtream-library_1.28.8.0.zip",
+        "checksum": "1aec8a8baf58f4b102a37aa1c53f8027",
+        "timestamp": "2026-02-04T22:00:00Z"
+      },
+      {
         "version": "1.28.7.0",
         "changelog": "Add collapsible Advanced Settings section to General tab, enable metadata lookup by default",
         "targetAbi": "10.11.0.0",
