@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.28.6.0",
+        "changelog": "Fix User-Agent header not being sent in API requests",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.28.6.0/jellyfin-xtream-library_1.28.6.0.zip",
+        "checksum": "96712d6ea18aafcc3ca484088928b118",
+        "timestamp": "2026-02-04T20:30:00Z"
+      },
+      {
         "version": "1.28.5.0",
         "changelog": "Fix releasedate parsing crash for malformed API responses, expose Sync Parallelism setting in config UI",
         "targetAbi": "10.11.0.0",
