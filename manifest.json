@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.1.0",
+        "changelog": "Fix CleanLibraries 'Directory not empty' error on Linux/Docker, clear snapshots on library clean",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.1.0/jellyfin-xtream-library_1.30.1.0.zip",
+        "checksum": "198ad45da7a1faf8b1efa564d9187170",
+        "timestamp": "2026-02-05T01:00:00Z"
+      },
+      {
         "version": "1.30.0.0",
         "changelog": "Sync speed optimizations: parallel movie+series sync, parallel image downloads, smart skip before API call, metadata timeout 30s→10s, default parallelism 3→6, 60-70% faster full syncs, 227 tests passing",
         "targetAbi": "10.11.0.0",
