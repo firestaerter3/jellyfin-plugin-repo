@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.4.0",
+        "changelog": "Sync suppression after Clean Libraries is now indefinite until manual Sync trigger (was 5-minute timeout)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.4.0/jellyfin-xtream-library_1.30.4.0.zip",
+        "checksum": "88640cb2962e6870667778c8159da2bb",
+        "timestamp": "2026-02-05T02:00:00Z"
+      },
+      {
         "version": "1.30.3.0",
         "changelog": "Fix files reappearing after Clean Libraries: suppress sync for 5 minutes after cleaning to prevent scheduler from immediately restarting",
         "targetAbi": "10.11.0.0",
