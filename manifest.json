@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.0.0",
+        "changelog": "Sync speed optimizations: parallel movie+series sync, parallel image downloads, smart skip before API call, metadata timeout 30s→10s, default parallelism 3→6, 60-70% faster full syncs, 227 tests passing",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.0.0/jellyfin-xtream-library_1.30.0.0.zip",
+        "checksum": "f183df5f0b530013b769fdeafaa32beb",
+        "timestamp": "2026-02-05T00:30:00Z"
+      },
+      {
         "version": "1.29.0.0",
         "changelog": "Incremental sync: 10-100x faster syncs after first run, only processes changed content, 90%+ fewer API calls, configurable sync interval and thresholds, 223 tests passing",
         "targetAbi": "10.11.0.0",
