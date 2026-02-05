@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.8.0",
+        "changelog": "Reduce default request delay (100ms to 50ms) and metadata lookup timeout (10s to 5s) for faster sync",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.8.0/jellyfin-xtream-library_1.30.8.0.zip",
+        "checksum": "9e93f8110a56af432dcb110dc230495c",
+        "timestamp": "2026-02-05T17:30:00Z"
+      },
+      {
         "version": "1.30.7.0",
         "changelog": "Fix concurrent sync progress (show both Movies + Series phases) and episode deserialization for Xtream API quirks",
         "targetAbi": "10.11.0.0",
