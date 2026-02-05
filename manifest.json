@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.5.0",
+        "changelog": "Fix series scanning (smart skip now checks LastModified) and JSON deserialization errors for inconsistent Xtream API responses",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.5.0/jellyfin-xtream-library_1.30.5.0.zip",
+        "checksum": "3c2a1e063c3d83a55ec1e652673896b5",
+        "timestamp": "2026-02-05T15:30:00Z"
+      },
+      {
         "version": "1.30.4.0",
         "changelog": "Sync suppression after Clean Libraries is now indefinite until manual Sync trigger (was 5-minute timeout)",
         "targetAbi": "10.11.0.0",
