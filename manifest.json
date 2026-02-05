@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.9.0",
+        "changelog": "Faster initial scan: bulk VOD info pre-fetch and skip unnecessary smart-skip checks when no existing folders",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.9.0/jellyfin-xtream-library_1.30.9.0.zip",
+        "checksum": "62af297a9a701480a11c2c3eb8032744",
+        "timestamp": "2026-02-05T18:00:00Z"
+      },
+      {
         "version": "1.30.8.0",
         "changelog": "Reduce default request delay (100ms to 50ms) and metadata lookup timeout (10s to 5s) for faster sync",
         "targetAbi": "10.11.0.0",
