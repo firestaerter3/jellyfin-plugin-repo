@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.10.0",
+        "changelog": "Faster scanning: O(1) series folder lookup, increased default parallelism (10) and batch size (25)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.10.0/jellyfin-xtream-library_1.30.10.0.zip",
+        "checksum": "8cd9d7266bb31b8a90c60805bad04dd2",
+        "timestamp": "2026-02-06T12:00:00Z"
+      },
+      {
         "version": "1.30.9.0",
         "changelog": "Faster initial scan: bulk VOD info pre-fetch and skip unnecessary smart-skip checks when no existing folders",
         "targetAbi": "10.11.0.0",
