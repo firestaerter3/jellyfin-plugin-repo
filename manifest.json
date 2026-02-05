@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.6.0",
+        "changelog": "Fix sync hanging - use 1-second tolerance for LastModified comparison instead of exact equality",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.6.0/jellyfin-xtream-library_1.30.6.0.zip",
+        "checksum": "d93ee3ad86b719611c98041b10a39646",
+        "timestamp": "2026-02-05T16:00:00Z"
+      },
+      {
         "version": "1.30.5.0",
         "changelog": "Fix series scanning (smart skip now checks LastModified) and JSON deserialization errors for inconsistent Xtream API responses",
         "targetAbi": "10.11.0.0",
