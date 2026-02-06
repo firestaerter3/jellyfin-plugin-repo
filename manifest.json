@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.30.11.0",
+        "changelog": "Retry 5xx server errors with backoff, resilient category collection (single failing category no longer kills sync), per-item progress display",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.30.11.0/jellyfin-xtream-library_1.30.11.0.zip",
+        "checksum": "ed121022cf0270ccd15ef9799008bdb1",
+        "timestamp": "2026-02-06T12:30:00Z"
+      },
+      {
         "version": "1.30.10.0",
         "changelog": "Faster scanning: O(1) series folder lookup, increased default parallelism (10) and batch size (25)",
         "targetAbi": "10.11.0.0",
