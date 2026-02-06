@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.1.0",
+        "changelog": "Disable full library scan by default to prevent OOM crashes with large libraries. Add pre-fetch logging.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.1.0/jellyfin-xtream-library_1.31.1.0.zip",
+        "checksum": "5dad5d7e8435862b5cd18603b5da90fe",
+        "timestamp": "2026-02-06T11:05:00Z"
+      },
+      {
         "version": "1.31.0.0",
         "changelog": "Bulk series info pre-fetch for faster series scanning, retry 404 fix (failed items no longer silently disappear)",
         "targetAbi": "10.11.0.0",
