@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.4.0",
+        "changelog": "Incremental orphan cleanup (dead links removed without waiting for full sync), sync progress shown on page load, improved progress layout",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.4.0/jellyfin-xtream-library_1.31.4.0.zip",
+        "checksum": "d1a6f21434e493c31d3e6000e2b7bbd8",
+        "timestamp": "2026-02-07T22:00:00Z"
+      },
+      {
         "version": "1.31.3.0",
         "changelog": "Fix nullable reference type error handling - resolves releasedate:{} crashing 11,200+ series",
         "targetAbi": "10.11.0.0",
