@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.5.0",
+        "changelog": "Skip writing empty NFO files so Jellyfin can FFprobe streams for real media info (codec, bitrate, audio language)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.5.0/jellyfin-xtream-library_1.31.5.0.zip",
+        "checksum": "01ada6946414672210c7149f4ebf312e",
+        "timestamp": "2026-02-07T23:00:00Z"
+      },
+      {
         "version": "1.31.4.0",
         "changelog": "Incremental orphan cleanup (dead links removed without waiting for full sync), sync progress shown on page load, improved progress layout",
         "targetAbi": "10.11.0.0",
