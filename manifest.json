@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.11.0",
+        "changelog": "Fix missing auth header on Test Dispatcharr button",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.11.0/jellyfin-xtream-library_1.31.11.0.zip",
+        "checksum": "242e7c1c1cd40eb74018befa18017978",
+        "timestamp": "2026-02-08T19:40:00Z"
+      },
+      {
         "version": "1.31.10.0",
         "changelog": "Fix Dispatcharr REST API token endpoint URL and m3u_account model deserialization",
         "targetAbi": "10.11.0.0",
