@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.10.0",
+        "changelog": "Fix Dispatcharr REST API token endpoint URL and m3u_account model deserialization",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.10.0/jellyfin-xtream-library_1.31.10.0.zip",
+        "checksum": "b38f191387c9906c481bc70eeec2d484",
+        "timestamp": "2026-02-08T19:15:00Z"
+      },
+      {
         "version": "1.31.9.0",
         "changelog": "Dispatcharr multi-stream mode: discovers all stream variants per movie via REST API for real media info in Jellyfin's version picker",
         "targetAbi": "10.11.0.0",
