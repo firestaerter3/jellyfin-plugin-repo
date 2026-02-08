@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.9.0",
+        "changelog": "Dispatcharr multi-stream mode: discovers all stream variants per movie via REST API for real media info in Jellyfin's version picker",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.9.0/jellyfin-xtream-library_1.31.9.0.zip",
+        "checksum": "9f0bef41f20d6b01869ea868bc7c6068",
+        "timestamp": "2026-02-08T12:00:00Z"
+      },
+      {
         "version": "1.31.8.0",
         "changelog": "Reject metadata false positives: prevents non-movie content (e.g. Formule 1 recordings) from matching unrelated movies",
         "targetAbi": "10.11.0.0",
