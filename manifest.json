@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.8.0",
+        "changelog": "Reject metadata false positives: prevents non-movie content (e.g. Formule 1 recordings) from matching unrelated movies",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.8.0/jellyfin-xtream-library_1.31.8.0.zip",
+        "checksum": "1c5529d6dd367f0e5f1197948122a0d0",
+        "timestamp": "2026-02-08T09:30:00Z"
+      },
+      {
         "version": "1.31.7.0",
         "changelog": "Split delete into separate Movies and Series library buttons",
         "targetAbi": "10.11.0.0",
