@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.7.0",
+        "changelog": "Split delete into separate Movies and Series library buttons",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.7.0/jellyfin-xtream-library_1.31.7.0.zip",
+        "checksum": "9e3a31d86fba190db9be362b9af16ec5",
+        "timestamp": "2026-02-08T08:45:00Z"
+      },
+      {
         "version": "1.31.6.0",
         "changelog": "Self-healing STRM files: detects and fixes stale stream URLs when upstream IDs change",
         "targetAbi": "10.11.0.0",
