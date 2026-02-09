@@ -612,6 +612,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.1.0.0",
+        "changelog": "Direct probe optimization - 3.4x faster by bypassing TMDb re-fetch, calls ProbeProvider directly via IProviderManager",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/JellySTRMprobe/releases/download/v1.1.0.0/jellystrm-probe_1.1.0.0.zip",
+        "checksum": "b30ec7b559bb23f3d08a8bdf08f3677b",
+        "timestamp": "2026-02-09T22:45:00Z"
+      },
+      {
         "version": "1.0.0.0",
         "changelog": "Initial release - scheduled task probes unprobed STRM items, catch-up mode auto-probes new items, configurable parallelism/timeout/cooldown, library selection, 40 tests passing",
         "targetAbi": "10.11.0.0",
