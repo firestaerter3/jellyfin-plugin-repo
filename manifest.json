@@ -612,6 +612,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.1.1.0",
+        "changelog": "Fix config page collision with Xtream Library plugin (Settings button was showing wrong plugin's settings)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/JellySTRMprobe/releases/download/v1.1.1.0/jellystrm-probe_1.1.1.0.zip",
+        "checksum": "9da83a1c853bbcadcb541711a210c8a9",
+        "timestamp": "2026-02-10T00:05:00Z"
+      },
+      {
         "version": "1.1.0.0",
         "changelog": "Direct probe optimization - 3.4x faster by bypassing TMDb re-fetch, calls ProbeProvider directly via IProviderManager",
         "targetAbi": "10.11.0.0",
