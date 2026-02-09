@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.14.0",
+        "changelog": "Add custom title strip terms config and fix language tag trailing dashes (DE-), (NL-)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.14.0/jellyfin-xtream-library_1.31.14.0.zip",
+        "checksum": "3c58d1a1dd051906cbb9cba8a83167dc",
+        "timestamp": "2026-02-09T12:00:00Z"
+      },
+      {
         "version": "1.31.13.0",
         "changelog": "Use standard Xtream URLs for single-provider movies in Dispatcharr mode (fixes playback failure)",
         "targetAbi": "10.11.0.0",
