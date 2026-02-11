@@ -613,10 +613,10 @@
     "versions": [
       {
         "version": "1.2.0.0",
-        "changelog": "Delete failed STRM files after probing — opt-in feature removes dead/unavailable streams, recreated on next nightly sync",
+        "changelog": "Delete failed STRM files after probing — opt-in with failure threshold safety (default 10%) to prevent mass deletion when provider is down",
         "targetAbi": "10.11.0.0",
         "sourceUrl": "https://github.com/firestaerter3/JellySTRMprobe/releases/download/v1.2.0.0/jellystrm-probe_1.2.0.0.zip",
-        "checksum": "7979fa5e4bdbff27e0ff5caac47cb4d8",
+        "checksum": "97c1bbd21e24ba77a4453708c58bb66b",
         "timestamp": "2026-02-11T14:30:00Z"
       },
       {
