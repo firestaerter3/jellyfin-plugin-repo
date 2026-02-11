@@ -612,6 +612,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.2.0.0",
+        "changelog": "Delete failed STRM files after probing — opt-in feature removes dead/unavailable streams, recreated on next nightly sync",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/JellySTRMprobe/releases/download/v1.2.0.0/jellystrm-probe_1.2.0.0.zip",
+        "checksum": "7979fa5e4bdbff27e0ff5caac47cb4d8",
+        "timestamp": "2026-02-11T14:30:00Z"
+      },
+      {
         "version": "1.1.1.0",
         "changelog": "Fix config page collision with Xtream Library plugin (Settings button was showing wrong plugin's settings)",
         "targetAbi": "10.11.0.0",
