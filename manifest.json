@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.15.0",
+        "changelog": "Add Dashboard tab with sync status, history, library stats, live progress, and quick actions",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.15.0/jellyfin-xtream-library_1.31.15.0.zip",
+        "checksum": "dae3c2c03664d3b1c5bcc26150b02c07",
+        "timestamp": "2026-02-11T12:00:00Z"
+      },
+      {
         "version": "1.31.14.0",
         "changelog": "Add custom title strip terms config and fix language tag trailing dashes (DE-), (NL-)",
         "targetAbi": "10.11.0.0",
