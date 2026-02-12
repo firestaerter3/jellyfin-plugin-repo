@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.23.0",
+        "changelog": "Fix channel routing — throw FileNotFoundException for non-owned channels so Jellyfin falls through to M3U tuner",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.23.0/jellyfin-xtream-library_1.31.23.0.zip",
+        "checksum": "4b22d0402bd35d37a3ffd39a8b2b9c28",
+        "timestamp": "2026-02-12T21:30:00Z"
+      },
+      {
         "version": "1.31.22.0",
         "changelog": "Fix playback error for M3U tuner channels — return null from GetChannelStream for non-owned channels",
         "targetAbi": "10.11.0.0",
