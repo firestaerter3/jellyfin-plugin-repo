@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.21.0",
+        "changelog": "Fix tuner crash for non-xtream channel IDs + HLS latency tuning for near-instant channel switching",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.21.0/jellyfin-xtream-library_1.31.21.0.zip",
+        "checksum": "73ab2117bcb06191870b84ef26e2a876",
+        "timestamp": "2026-02-12T21:15:00Z"
+      },
+      {
         "version": "1.31.20.0",
         "changelog": "HLS latency tuning - enable remux instead of full transcode for near-instant channel switching (<1s)",
         "targetAbi": "10.11.0.0",
