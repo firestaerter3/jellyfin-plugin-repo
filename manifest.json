@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.20.0",
+        "changelog": "HLS latency tuning - enable remux instead of full transcode for near-instant channel switching (<1s)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.20.0/jellyfin-xtream-library_1.31.20.0.zip",
+        "checksum": "d62d5907d0f719de4f71bbd21f493bfb",
+        "timestamp": "2026-02-12T21:00:00Z"
+      },
+      {
         "version": "1.31.19.0",
         "changelog": "Add native tuner host for zero-probe Live TV - cuts channel switch time from ~6s to ~3s",
         "targetAbi": "10.11.0.0",
