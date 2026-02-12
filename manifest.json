@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.18.0",
+        "changelog": "Split sync history into Movies/Series rows with individual added/deleted counts",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.18.0/jellyfin-xtream-library_1.31.18.0.zip",
+        "checksum": "1f73b576c2aee79190e261cdc93643a7",
+        "timestamp": "2026-02-12T12:20:00Z"
+      },
+      {
         "version": "1.31.17.0",
         "changelog": "Persist sync history to disk so dashboard survives Jellyfin restarts",
         "targetAbi": "10.11.0.0",
