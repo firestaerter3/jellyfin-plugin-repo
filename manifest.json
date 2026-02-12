@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.24.0",
+        "changelog": "Handle Jellyfin hdhr_ channel ID remapping — map channel numbers back to stream IDs for correct playback",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.24.0/jellyfin-xtream-library_1.31.24.0.zip",
+        "checksum": "f67bbd1e2bb6f2fdca362eee41aac56d",
+        "timestamp": "2026-02-12T21:45:00Z"
+      },
+      {
         "version": "1.31.23.0",
         "changelog": "Fix channel routing — throw FileNotFoundException for non-owned channels so Jellyfin falls through to M3U tuner",
         "targetAbi": "10.11.0.0",
