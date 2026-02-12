@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.17.0",
+        "changelog": "Persist sync history to disk so dashboard survives Jellyfin restarts",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.17.0/jellyfin-xtream-library_1.31.17.0.zip",
+        "checksum": "6084f6b47b09b009841066887674a538",
+        "timestamp": "2026-02-12T08:30:00Z"
+      },
+      {
         "version": "1.31.16.0",
         "changelog": "Fix dashboard library stats count in Multiple folder mode, clear stale sync status, show added/deleted in history",
         "targetAbi": "10.11.0.0",
