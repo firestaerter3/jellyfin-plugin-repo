@@ -34,62 +34,6 @@
     "category": "General",
     "versions": [
       {
-        "version": "1.31.25.0",
-        "changelog": "Fix StringBoolConverter crash on integer values, channel mapping race condition during guide refresh, and add diagnostic logging",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.25.0/jellyfin-xtream-library_1.31.25.0.zip",
-        "checksum": "0141df3676d3c10aa355e8e992442842",
-        "timestamp": "2026-02-12T23:10:00Z"
-      },
-      {
-        "version": "1.31.24.0",
-        "changelog": "Handle Jellyfin hdhr_ channel ID remapping — map channel numbers back to stream IDs for correct playback",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.24.0/jellyfin-xtream-library_1.31.24.0.zip",
-        "checksum": "f67bbd1e2bb6f2fdca362eee41aac56d",
-        "timestamp": "2026-02-12T21:45:00Z"
-      },
-      {
-        "version": "1.31.23.0",
-        "changelog": "Fix channel routing — throw FileNotFoundException for non-owned channels so Jellyfin falls through to M3U tuner",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.23.0/jellyfin-xtream-library_1.31.23.0.zip",
-        "checksum": "4b22d0402bd35d37a3ffd39a8b2b9c28",
-        "timestamp": "2026-02-12T21:30:00Z"
-      },
-      {
-        "version": "1.31.22.0",
-        "changelog": "Fix playback error for M3U tuner channels — return null from GetChannelStream for non-owned channels",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.22.0/jellyfin-xtream-library_1.31.22.0.zip",
-        "checksum": "be42bacb195f22837cf3503f1183a46c",
-        "timestamp": "2026-02-12T21:20:00Z"
-      },
-      {
-        "version": "1.31.21.0",
-        "changelog": "Fix tuner crash for non-xtream channel IDs + HLS latency tuning for near-instant channel switching",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.21.0/jellyfin-xtream-library_1.31.21.0.zip",
-        "checksum": "73ab2117bcb06191870b84ef26e2a876",
-        "timestamp": "2026-02-12T21:15:00Z"
-      },
-      {
-        "version": "1.31.20.0",
-        "changelog": "HLS latency tuning - enable remux instead of full transcode for near-instant channel switching (<1s)",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.20.0/jellyfin-xtream-library_1.31.20.0.zip",
-        "checksum": "d62d5907d0f719de4f71bbd21f493bfb",
-        "timestamp": "2026-02-12T21:00:00Z"
-      },
-      {
-        "version": "1.31.19.0",
-        "changelog": "Add native tuner host for zero-probe Live TV - cuts channel switch time from ~6s to ~3s",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.19.0/jellyfin-xtream-library_1.31.19.0.zip",
-        "checksum": "4b6fa0ddb06185affc6f5f03da0555b6",
-        "timestamp": "2026-02-12T19:00:00Z"
-      },
-      {
         "version": "1.31.18.0",
         "changelog": "Split sync history into Movies/Series rows with individual added/deleted counts",
         "targetAbi": "10.11.0.0",
