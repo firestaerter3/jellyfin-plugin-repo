@@ -34,6 +34,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.33.0",
+        "changelog": "Write provider IDs to NFO files: movie NFOs now include <uniqueid type=\"tmdb\"> and series folders get a tvshow.nfo, preventing repeated metadata lookups on every library scan (fixes #12, fixes #13)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.33.0/jellyfin-xtream-library_1.31.33.0.zip",
+        "checksum": "38af1a04a9c35d814c82cc15d6a618b2",
+        "timestamp": "2026-02-19T12:00:00Z"
+      },
+      {
         "version": "1.31.32.0",
         "changelog": "Fix NullReferenceException in User-Agent header handling (fixes #11)",
         "targetAbi": "10.11.0.0",
