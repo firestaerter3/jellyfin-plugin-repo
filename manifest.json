@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.35.0",
+        "changelog": "Strip embedded series name, season and episode number from episode titles when providers include them (e.g. 'Breaking Bad - S01E01 - Pilot' no longer produces doubled filenames)",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.35.0/jellyfin-xtream-library_1.31.35.0.zip",
+        "checksum": "fb8ba9f7a613cc60042d7a58a6974ef0",
+        "timestamp": "2026-02-20T08:09:00Z"
+      },
+      {
         "version": "1.31.34.0",
         "changelog": "Log stream URL and HTTP error when native tuner playback fails; fix year parsing for dash-suffix movie titles (e.g. 'Movie - 2025' now correctly splits into <title> and <year>)",
         "targetAbi": "10.11.0.0",
