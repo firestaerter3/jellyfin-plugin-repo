@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.36.0",
+        "changelog": "Add year-free metadata lookup fallback option for providers with incorrect years in stream names.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.36.0/jellyfin-xtream-library_1.31.36.0.zip",
+        "checksum": "6742ffe3b2a83e1affad0439009df7be",
+        "timestamp": "2026-02-28T00:00:00Z"
+      },
+      {
         "version": "1.31.35.0",
         "changelog": "Strip embedded series name, season and episode number from episode titles when providers include them (e.g. 'Breaking Bad - S01E01 - Pilot' no longer produces doubled filenames)",
         "targetAbi": "10.11.0.0",
