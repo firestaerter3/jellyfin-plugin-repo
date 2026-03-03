@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.38.0",
+        "changelog": "Fix 403 errors for providers that require no Xtream credentials (e.g. iptorrents VIP bundled IPTV): empty username/password fields no longer send username=&password= in API requests.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.38.0/jellyfin-xtream-library_1.31.38.0.zip",
+        "checksum": "f7fcaacfbcf9d07beffb2ed931c99748",
+        "timestamp": "2026-03-03T00:00:00Z"
+      },
+      {
         "version": "1.31.37.0",
         "changelog": "Normalize colons in folder names for cross-platform compatibility: titles like '21 Paradise: Verkaufte Lust' now produce folders named '21 Paradise - Verkaufte Lust' (fixes #20).",
         "targetAbi": "10.11.0.0",
