@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.39.0",
+        "changelog": "Fix HLS stream format causing transcoding on every channel; default stream format changed from HLS to MPEG-TS for direct streaming with no server CPU usage.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.39.0/jellyfin-xtream-library_1.31.39.0.zip",
+        "checksum": "ef19304439731d578aa953296a5617f9",
+        "timestamp": "2026-03-06T00:00:00Z"
+      },
+      {
         "version": "1.31.38.0",
         "changelog": "Fix 403 errors for providers that require no Xtream credentials (e.g. iptorrents VIP bundled IPTV): empty username/password fields no longer send username=&password= in API requests.",
         "targetAbi": "10.11.0.0",
