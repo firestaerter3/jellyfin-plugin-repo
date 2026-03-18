@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.41.0",
+        "changelog": "Fix episode names showing raw filenames when NFO creation is enabled: episode NFOs now only contain stream details, letting Jellyfin metadata providers (TMDb/TVDb) supply proper episode names (fixes #23).",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.41.0/jellyfin-xtream-library_1.31.41.0.zip",
+        "checksum": "8babc2f9c238268e17e4b45964b4918c",
+        "timestamp": "2026-03-18T00:00:00Z"
+      },
+      {
         "version": "1.31.40.0",
         "changelog": "Fix series sync failure on providers that return empty strings or omit numeric fields (last_modified, rating, episode_run_time, category_id) in the get_series response — all series categories now deserialize correctly (fixes #27).",
         "targetAbi": "10.11.0.0",
