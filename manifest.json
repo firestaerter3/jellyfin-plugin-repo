@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.31.42.0",
+        "changelog": "Add regex removal patterns for STRM file names: new 'Regex Removal Patterns' config field (alongside the existing substring 'Custom Title Removal Terms') applies to file names only, leaving folders untouched so Jellyfin metadata providers keep [tmdbid-N] / [tvdbid-N] identification (closes #32).",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.42.0/jellyfin-xtream-library_1.31.42.0.zip",
+        "checksum": "6763328a50e536e4efe280e45464dcb2",
+        "timestamp": "2026-05-01T00:00:00Z"
+      },
+      {
         "version": "1.31.41.0",
         "changelog": "Fix episode names showing raw filenames when NFO creation is enabled: episode NFOs now only contain stream details, letting Jellyfin metadata providers (TMDb/TVDb) supply proper episode names (fixes #23).",
         "targetAbi": "10.11.0.0",
