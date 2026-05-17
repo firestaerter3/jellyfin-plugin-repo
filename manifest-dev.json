@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.33.1.0",
+        "changelog": "Fix Live TV on multi-provider setups: Load Categories (and M3U/EPG/Catchup outputs) returned \"Failed to load. Check credentials.\" when the provider was configured only via the multi-provider UI. Endpoints now read credentials from Providers[0] like the rest of the plugin. Closes #17.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.1.0/jellyfin-xtream-library_1.33.1.0.zip",
+        "checksum": "e8fd93f7a7a99f38288567323306abdd",
+        "timestamp": "2026-05-17T16:00:00Z"
+      },
+      {
         "version": "1.33.0.0",
         "changelog": "Per-channel Live TV selection (fixes #17): expand any Live TV category in the config UI to see its channels and uncheck the ones you don't want synced. Select all / Deselect all per category. Channels are fetched on demand. Existing configs keep current behavior. Refresh the Live TV cache after editing selections.",
         "targetAbi": "10.11.0.0",
