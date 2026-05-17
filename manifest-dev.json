@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.33.2.0",
+        "changelog": "Fix legacy-config migration silently failing on upgrades from pre-v1.32 releases. The [Obsolete] attribute on the legacy single-provider fields caused .NET's XmlSerializer to skip them during deserialization, so the on-startup migration into Providers[0] never ran. After this fix the existing provider settings are picked up on first restart. Pairs with v1.33.1.0's Live TV credential-check fix.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.2.0/jellyfin-xtream-library_1.33.2.0.zip",
+        "checksum": "6a1f6ea7d6bf89a46bd8c7c6f924f5b9",
+        "timestamp": "2026-05-17T18:00:00Z"
+      },
+      {
         "version": "1.33.1.0",
         "changelog": "Fix Live TV on multi-provider setups: Load Categories (and M3U/EPG/Catchup outputs) returned \"Failed to load. Check credentials.\" when the provider was configured only via the multi-provider UI. Endpoints now read credentials from Providers[0] like the rest of the plugin. Closes #17.",
         "targetAbi": "10.11.0.0",
