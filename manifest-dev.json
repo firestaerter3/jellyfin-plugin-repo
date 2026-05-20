@@ -1,12 +1,20 @@
 [
   {
-    "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "guid": "63ba5fcd-c8ce-421a-83e8-ba0b11030d53",
     "name": "Xtream Library (Dev)",
     "description": "EXPERIMENTAL: Sync Xtream VOD and Series content to native Jellyfin libraries via STRM files. Includes native tuner (may cause playback regression).",
     "overview": "Development channel for Xtream Library plugin. Contains experimental features like native tuner host. Add this manifest URL to test pre-release builds.",
     "owner": "firestaerter3",
     "category": "General",
     "versions": [
+      {
+        "version": "1.33.3.0",
+        "changelog": "Fix overlapping plugin GUID (#43): the boilerplate placeholder GUID a1b2c3d4-e5f6-7890-abcd-ef1234567890 was shared with three unrelated Jellyfin plugins. Replaced with a freshly-generated random GUID. NOTE: existing installs are treated as a different plugin after upgrade — uninstall the old 'Xtream Library' entry from Jellyfin and reinstall to pick up this version. Plugin configuration is preserved across the reinstall.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.3.0/jellyfin-xtream-library_1.33.3.0.zip",
+        "checksum": "26659da035d6d3d879787b60d7e2520e",
+        "timestamp": "2026-05-20T00:00:00Z"
+      },
       {
         "version": "1.33.2.0",
         "changelog": "Fix legacy-config migration silently failing on upgrades from pre-v1.32 releases. The [Obsolete] attribute on the legacy single-provider fields caused .NET's XmlSerializer to skip them during deserialization, so the on-startup migration into Providers[0] never ran. After this fix the existing provider settings are picked up on first restart. Pairs with v1.33.1.0's Live TV credential-check fix.",
