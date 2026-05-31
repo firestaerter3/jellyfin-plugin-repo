@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.35.2.0",
+        "changelog": "Live TV channel checkboxes track parent category state (#46 follow-up). After clicking the master Deselect All button in Pick mode, expanding any (now-deselected) category showed every channel underneath as ticked, even though those channels would not actually sync. Cause: per-channel checkbox state was computed purely from the excludedLiveStreamIds list, and v1.35.0.0's correct decision to clear that list on master Deselect All collapsed the rendering logic to 'all channels checked because nothing is excluded'. Fix: channel checkboxes now gate on the parent category checkbox as well, render unchecked with an italic hint when the parent is deselected, auto-tick the parent when the user re-enables an individual channel or panel-level Select All, and re-render any expanded child panel immediately when the category checkbox flips. No configuration change required.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.35.2.0/jellyfin-xtream-library_1.35.2.0.zip",
+        "checksum": "56d8f36a5f1ba7d6b1cc1b34f7bf1ea6",
+        "timestamp": "2026-05-31T20:34:00Z"
+      },
+      {
         "version": "1.35.1.0",
         "changelog": "Truncate STRM filenames to 255 bytes (fixes #47). Series with very long episode titles (e.g. one Interspecies Reviewers episode whose provider-supplied title runs to 240+ characters) silently failed to sync because the resulting STRM filename exceeded Linux's NAME_MAX per-component cap, throwing PathTooLongException on every sync attempt. The episode and movie filename builders now run their output through a UTF-8 byte-aware truncation step that preserves the .strm extension, respects multi-byte character boundaries (Japanese, emoji, etc.), and trims trailing separator punctuation introduced by the cut. 255 bytes is the cross-platform safe ceiling — Windows NTFS and macOS APFS use 255 UTF-16 code units which is laxer. No configuration change required.",
         "targetAbi": "10.11.0.0",
