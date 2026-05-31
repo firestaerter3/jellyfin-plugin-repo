@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.36.0.0",
+        "changelog": "Live TV channel counts on the sync status dashboard (#48). After each sync, the dashboard panel now shows a Live TV row with the total channel count and added/updated/deleted split, matching the existing Movies and Series rows. The same counters appear in the live progress display while a sync is running. How it works: at the end of SyncAsync the plugin fetches the current channel set, compares it against a persisted JSON snapshot (live-tv-channels.json in the plugin data folder), and writes the new snapshot back. A channel counts as 'updated' when its name, EPG channel id, logo URL, or channel number differs. The M3U/EPG cache is invalidated as part of the refresh so Jellyfin's next tuner poll sees the new data. A Live TV refresh failure no longer aborts the sync — VOD/Series counts persist and the error message is surfaced separately. First sync after upgrade shows every channel as 'added' because no previous snapshot exists yet.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.0.0/jellyfin-xtream-library_1.36.0.0.zip",
+        "checksum": "fc5323f8e42544bc1a6209214e25938e",
+        "timestamp": "2026-05-31T23:30:00Z"
+      },
+      {
         "version": "1.35.2.0",
         "changelog": "Live TV channel checkboxes track parent category state (#46 follow-up). After clicking the master Deselect All button in Pick mode, expanding any (now-deselected) category showed every channel underneath as ticked, even though those channels would not actually sync. Cause: per-channel checkbox state was computed purely from the excludedLiveStreamIds list, and v1.35.0.0's correct decision to clear that list on master Deselect All collapsed the rendering logic to 'all channels checked because nothing is excluded'. Fix: channel checkboxes now gate on the parent category checkbox as well, render unchecked with an italic hint when the parent is deselected, auto-tick the parent when the user re-enables an individual channel or panel-level Select All, and re-render any expanded child panel immediately when the category checkbox flips. No configuration change required.",
         "targetAbi": "10.11.0.0",
