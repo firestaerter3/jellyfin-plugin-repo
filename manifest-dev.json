@@ -22,7 +22,17 @@
         "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.3.0/jellyfin-xtream-library_1.33.3.0.zip",
         "checksum": "26659da035d6d3d879787b60d7e2520e",
         "timestamp": "2026-05-20T00:00:00Z"
-      },
+      }
+    ]
+  },
+  {
+    "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "name": "Xtream Library (Dev)",
+    "description": "EXPERIMENTAL: Sync Xtream VOD and Series content to native Jellyfin libraries via STRM files. Includes native tuner (may cause playback regression).",
+    "overview": "Development channel for Xtream Library plugin. Contains experimental features like native tuner host. Add this manifest URL to test pre-release builds.",
+    "owner": "firestaerter3",
+    "category": "General",
+    "versions": [
       {
         "version": "1.33.2.0",
         "changelog": "Fix legacy-config migration silently failing on upgrades from pre-v1.32 releases. The [Obsolete] attribute on the legacy single-provider fields caused .NET's XmlSerializer to skip them during deserialization, so the on-startup migration into Providers[0] never ran. After this fix the existing provider settings are picked up on first restart. Pairs with v1.33.1.0's Live TV credential-check fix.",
@@ -54,6 +64,14 @@
         "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.32.0.0/jellyfin-xtream-library_1.32.0.0.zip",
         "checksum": "a3687f2f314c18ebec301cfd998787ce",
         "timestamp": "2026-05-12T00:00:00Z"
+      },
+      {
+        "version": "1.31.44.0",
+        "changelog": "⚠️ This plugin has moved to a new GUID. You won't see future updates on this entry. After updating, open the plugin catalog and install 'Xtream Library' (it will appear as a separate entry with the new GUID), then uninstall this plugin and restart Jellyfin. Provider settings, library folders, and channel selections carry over automatically. See https://github.com/firestaerter3/Jellyfin-Xtream-Library/issues/46 for context.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.44.0/jellyfin-xtream-library_1.31.44.0.zip",
+        "checksum": "01d336978db2683b565a246d6930e638",
+        "timestamp": "2026-05-31T07:56:00Z"
       },
       {
         "version": "1.31.43.0",
