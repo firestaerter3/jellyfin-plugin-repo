@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.36.1.0",
+        "changelog": "Fixes Live TV playback on multi-provider configs (#46 follow-up). Users who configured their provider exclusively via the multi-provider UI (introduced in v1.32) were getting unplayable channels because the M3U export and native tuner both emitted stream URLs shaped like /live///{streamId}.ts — no scheme, no server, no credentials. FFmpeg refused with 'No such file or directory'. Cause: BuildStreamUrl and BuildCatchupUrl were the last consumers still reading the legacy single-provider config fields directly; on a fresh v1.32+ install those fields are empty and only Providers[0] is populated. Fix: a new ResolveLiveTvProvider helper resolves credentials from Providers[0] first (falling back to legacy fields for any config caught mid-migration), and all three URL builders route through it. Third installment of the multi-provider migration story (v1.33.1.0 fixed endpoint gating, v1.33.2.0 fixed the pre-v1.32 startup migration, this fixes URL construction). No configuration change required.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.1.0/jellyfin-xtream-library_1.36.1.0.zip",
+        "checksum": "2f334b1396183b566967ce9108b479a2",
+        "timestamp": "2026-06-02T00:15:00Z"
+      },
+      {
         "version": "1.36.0.0",
         "changelog": "Live TV channel counts on the sync status dashboard (#48). After each sync, the dashboard panel now shows a Live TV row with the total channel count and added/updated/deleted split, matching the existing Movies and Series rows. The same counters appear in the live progress display while a sync is running. How it works: at the end of SyncAsync the plugin fetches the current channel set, compares it against a persisted JSON snapshot (live-tv-channels.json in the plugin data folder), and writes the new snapshot back. A channel counts as 'updated' when its name, EPG channel id, logo URL, or channel number differs. The M3U/EPG cache is invalidated as part of the refresh so Jellyfin's next tuner poll sees the new data. A Live TV refresh failure no longer aborts the sync — VOD/Series counts persist and the error message is surfaced separately. First sync after upgrade shows every channel as 'added' because no previous snapshot exists yet.",
         "targetAbi": "10.11.0.0",
