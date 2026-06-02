@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.36.2.0",
+        "changelog": "Clarifies the Enable Native Tuner UI to prevent duplicate Live TV channels (#50). The previous checkbox description told users to add the Xtream Library tuner manually under Dashboard > Live TV > Tuner Devices, but Jellyfin does not show ITunerHost-based tuners there (that list is only for manually-added tuners). Users who followed the instruction and also pasted the M3U URL as a manual HDHomeRun tuner ended up with both code paths publishing the same channel set, hence every channel appearing twice in the guide. This release replaces the misleading instruction with an accurate one, adds a 'Pick one tuner mode' warning inline under the Native Tuner checkbox explicitly calling out the duplicate-channels symptom, notes the transcoding-vs-remux trade-off so users can choose the right mode for their hardware, and adds a matching warning in the Setup URLs section so the cross-reference is visible from either entry point. No tuner code change; both modes remain fully supported.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.2.0/jellyfin-xtream-library_1.36.2.0.zip",
+        "checksum": "7eaddedd9eee376a7a3b8aef489b0ab8",
+        "timestamp": "2026-06-02T01:30:00Z"
+      },
+      {
         "version": "1.36.1.0",
         "changelog": "Fixes Live TV playback on multi-provider configs (#46 follow-up). Users who configured their provider exclusively via the multi-provider UI (introduced in v1.32) were getting unplayable channels because the M3U export and native tuner both emitted stream URLs shaped like /live///{streamId}.ts — no scheme, no server, no credentials. FFmpeg refused with 'No such file or directory'. Cause: BuildStreamUrl and BuildCatchupUrl were the last consumers still reading the legacy single-provider config fields directly; on a fresh v1.32+ install those fields are empty and only Providers[0] is populated. Fix: a new ResolveLiveTvProvider helper resolves credentials from Providers[0] first (falling back to legacy fields for any config caught mid-migration), and all three URL builders route through it. Third installment of the multi-provider migration story (v1.33.1.0 fixed endpoint gating, v1.33.2.0 fixed the pre-v1.32 startup migration, this fixes URL construction). No configuration change required.",
         "targetAbi": "10.11.0.0",
