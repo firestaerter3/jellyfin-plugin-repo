@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.36.6.0",
+        "changelog": "Adds a direct 'Xtream Library' entry to the Jellyfin admin dashboard sidebar (#36, thanks @dwizzle204). Sets EnableInMainMenu = true on the embedded config page so the sidebar surfaces an Xtream Library entry directly under Dashboard > Plugins, alongside the existing Dashboard > Plugins > Xtream Library path. Pure UX improvement, no functional change. Cherry-picked from the original PR with author credit preserved via Co-Authored-By, the original PR's new PluginTests.cs collided with the unrelated test file added for BUG-009, so the sidebar-registration assertion is now an additional test on the existing PluginTests.cs.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.6.0/jellyfin-xtream-library_1.36.6.0.zip",
+        "checksum": "9423319a5d9c774004a5385ec0772c68",
+        "timestamp": "2026-06-03T00:45:00Z"
+      },
+      {
         "version": "1.36.5.0",
         "changelog": "Fixes live-stream list fetch failures on Xtream providers that return the 'added' field as a formatted date string (e.g. '22/05/2024 10:00:00') instead of a Unix timestamp (#41, thanks @gamegninou). LiveStreamInfo.Added was previously typed as long, which forced strict integer JSON deserialization and threw JsonSerializationException for the entire live-stream list whenever the provider used the string variant. The field has zero readers in the codebase, it only exists for round-trip JSON purposes, so the loosest type that accepts every provider variant is right. Changed to string, matching the sibling StreamInfo.Added (VOD movies) which has always been a string. Intentionally simpler than the converter-based approach proposed in #41, which tried MM/dd before dd/MM and would have silently mis-parsed ambiguous dates with day ≤ 12. 4 new deserialization tests.",
         "targetAbi": "10.11.0.0",
