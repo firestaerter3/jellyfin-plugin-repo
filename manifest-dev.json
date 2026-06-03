@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.36.5.0",
+        "changelog": "Fixes live-stream list fetch failures on Xtream providers that return the 'added' field as a formatted date string (e.g. '22/05/2024 10:00:00') instead of a Unix timestamp (#41, thanks @gamegninou). LiveStreamInfo.Added was previously typed as long, which forced strict integer JSON deserialization and threw JsonSerializationException for the entire live-stream list whenever the provider used the string variant. The field has zero readers in the codebase, it only exists for round-trip JSON purposes, so the loosest type that accepts every provider variant is right. Changed to string, matching the sibling StreamInfo.Added (VOD movies) which has always been a string. Intentionally simpler than the converter-based approach proposed in #41, which tried MM/dd before dd/MM and would have silently mis-parsed ambiguous dates with day ≤ 12. 4 new deserialization tests.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.5.0/jellyfin-xtream-library_1.36.5.0.zip",
+        "checksum": "7bb56f711a119e7d835de13fc138b393",
+        "timestamp": "2026-06-03T00:30:00Z"
+      },
+      {
         "version": "1.36.4.0",
         "changelog": "Fixes three distinct EPG parsing bugs (#45, thanks @FilipBB). (1) XmlReader double-advance: AppendUpstreamProgrammes used XNode.ReadFrom inside a while(reader.Read()) loop, which advances the reader twice per element. For minified XMLTV (no whitespace between programme tags) every other programme was silently skipped from the guide. (2) Offset parsing failure on +HH:MM style offsets: TryParseXmltvTime only accepted +HHMM. Modern XMLTV providers that use the ISO 8601 style with a colon (e.g. +02:00) had their programmes parsed as UTC and filtered out as in-the-past. (3) Aggressive past-filter dropped currently-playing shows: any programme ending even a second before now was discarded, so minor clock skew between provider and server made the now-playing show disappear from the guide. Now: 1-hour grace period. Also: extra date format support (YYYYMMDDHHMM and YYYYMMDD as accepted alternatives) and 7 new tests covering offset forms and short date formats. Follow-up marks TryParseXmltvTime as internal so the tests can call it directly instead of via reflection.",
         "targetAbi": "10.11.0.0",
