@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.36.7.0",
+        "changelog": "Adds an in-Jellyfin 'Use beta channel' toggle under Dashboard > Plugins > Xtream Library > Settings > General > Updates. When enabled, the plugin registers its beta plugin manifest URL with Jellyfin's plugin repository list so pre-release versions appear in Dashboard > Plugins > Catalog like any other plugin. Disabling removes the entry. State persists across Jellyfin restarts. Closes the canary-adoption gap surfaced by #52: until now the only way to opt into betas was to manually add a custom Catalog URL, a step almost no users discovered. As of v1.36.6.0 only a handful of betas had ever been installed which made the canary essentially non-functional. Moving the opt-in into the plugin's own UI is the smallest change that genuinely lowers the friction for users who want to help catch regressions before they reach stable. New hosted-service component BetaChannelManager reconciles the repository list on boot and on every plugin-config save, with IOException rollback so a transient disk error never leaves in-memory state out of sync with system.xml.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.7.0/jellyfin-xtream-library_1.36.7.0.zip",
+        "checksum": "950990dbec1a75b227fc51d5d73b772a",
+        "timestamp": "2026-06-05T06:20:00Z"
+      },
+      {
         "version": "1.36.6.0",
         "changelog": "Adds a direct 'Xtream Library' entry to the Jellyfin admin dashboard sidebar (#36, thanks @dwizzle204). Sets EnableInMainMenu = true on the embedded config page so the sidebar surfaces an Xtream Library entry directly under Dashboard > Plugins, alongside the existing Dashboard > Plugins > Xtream Library path. Pure UX improvement, no functional change. Cherry-picked from the original PR with author credit preserved via Co-Authored-By, the original PR's new PluginTests.cs collided with the unrelated test file added for BUG-009, so the sidebar-registration assertion is now an additional test on the existing PluginTests.cs.",
         "targetAbi": "10.11.0.0",
