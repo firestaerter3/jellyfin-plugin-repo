@@ -8,6 +8,14 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.36.7.0",
+        "changelog": "Adds an in-Jellyfin 'Use beta channel' toggle under Dashboard > Plugins > Xtream Library > Settings > General > Updates. When enabled, the plugin registers its beta plugin manifest URL with Jellyfin's plugin repository list so pre-release versions appear in Dashboard > Plugins > Catalog like any other plugin. Disabling removes the entry. State persists across Jellyfin restarts. This release also rolls up everything previously available only on the beta channel between v1.34.0.0 and v1.36.6.0: multi-provider config UI improvements (#36), live-stream date parsing fixes (#41), three EPG XMLTV parsing bugs (#45), legacy-config recovery for users orphaned by the v1.33.3.0 GUID change (#49), Native Tuner UI duplicate-channel warning (#50), multi-provider Live TV URL construction fix (#46), and Live TV channel counts on the sync status dashboard (#48). See https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases for full per-version notes.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.7.0/jellyfin-xtream-library_1.36.7.0.zip",
+        "checksum": "950990dbec1a75b227fc51d5d73b772a",
+        "timestamp": "2026-06-05T06:20:00Z"
+      },
+      {
         "version": "1.34.0.0",
         "changelog": "Preserve full EPG metadata from upstream XMLTV (fixes #42): the plugin previously generated XMLTV from Xtream's JSON endpoint which only exposes title and description. It now passes the upstream xmltv.php through verbatim, preserving categories, ratings, credits, icons, dates, and star-ratings. Jellyfin can again categorize Live TV programs by genre. Falls back to the old JSON-based fetch if the upstream XMLTV is unavailable.",
         "targetAbi": "10.11.0.0",
