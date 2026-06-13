@@ -1,230 +1,238 @@
 [
-  {
-    "guid": "63ba5fcd-c8ce-421a-83e8-ba0b11030d53",
-    "name": "Xtream Library (Dev)",
-    "description": "EXPERIMENTAL: Sync Xtream VOD and Series content to native Jellyfin libraries via STRM files. Includes native tuner (may cause playback regression).",
-    "overview": "Development channel for Xtream Library plugin. Contains experimental features like native tuner host. Add this manifest URL to test pre-release builds.",
-    "owner": "firestaerter3",
-    "category": "General",
-    "versions": [
-      {
-        "version": "1.36.7.0",
-        "changelog": "Adds an in-Jellyfin 'Use beta channel' toggle under Dashboard > Plugins > Xtream Library > Settings > General > Updates. When enabled, the plugin registers its beta plugin manifest URL with Jellyfin's plugin repository list so pre-release versions appear in Dashboard > Plugins > Catalog like any other plugin. Disabling removes the entry. State persists across Jellyfin restarts. Closes the canary-adoption gap surfaced by #52: until now the only way to opt into betas was to manually add a custom Catalog URL, a step almost no users discovered. As of v1.36.6.0 only a handful of betas had ever been installed which made the canary essentially non-functional. Moving the opt-in into the plugin's own UI is the smallest change that genuinely lowers the friction for users who want to help catch regressions before they reach stable. New hosted-service component BetaChannelManager reconciles the repository list on boot and on every plugin-config save, with IOException rollback so a transient disk error never leaves in-memory state out of sync with system.xml.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.7.0/jellyfin-xtream-library_1.36.7.0.zip",
-        "checksum": "950990dbec1a75b227fc51d5d73b772a",
-        "timestamp": "2026-06-05T06:20:00Z"
-      },
-      {
-        "version": "1.36.6.0",
-        "changelog": "Adds a direct 'Xtream Library' entry to the Jellyfin admin dashboard sidebar (#36, thanks @dwizzle204). Sets EnableInMainMenu = true on the embedded config page so the sidebar surfaces an Xtream Library entry directly under Dashboard > Plugins, alongside the existing Dashboard > Plugins > Xtream Library path. Pure UX improvement, no functional change. Cherry-picked from the original PR with author credit preserved via Co-Authored-By, the original PR's new PluginTests.cs collided with the unrelated test file added for BUG-009, so the sidebar-registration assertion is now an additional test on the existing PluginTests.cs.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.6.0/jellyfin-xtream-library_1.36.6.0.zip",
-        "checksum": "9423319a5d9c774004a5385ec0772c68",
-        "timestamp": "2026-06-03T00:45:00Z"
-      },
-      {
-        "version": "1.36.5.0",
-        "changelog": "Fixes live-stream list fetch failures on Xtream providers that return the 'added' field as a formatted date string (e.g. '22/05/2024 10:00:00') instead of a Unix timestamp (#41, thanks @gamegninou). LiveStreamInfo.Added was previously typed as long, which forced strict integer JSON deserialization and threw JsonSerializationException for the entire live-stream list whenever the provider used the string variant. The field has zero readers in the codebase, it only exists for round-trip JSON purposes, so the loosest type that accepts every provider variant is right. Changed to string, matching the sibling StreamInfo.Added (VOD movies) which has always been a string. Intentionally simpler than the converter-based approach proposed in #41, which tried MM/dd before dd/MM and would have silently mis-parsed ambiguous dates with day ≤ 12. 4 new deserialization tests.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.5.0/jellyfin-xtream-library_1.36.5.0.zip",
-        "checksum": "7bb56f711a119e7d835de13fc138b393",
-        "timestamp": "2026-06-03T00:30:00Z"
-      },
-      {
-        "version": "1.36.4.0",
-        "changelog": "Fixes three distinct EPG parsing bugs (#45, thanks @FilipBB). (1) XmlReader double-advance: AppendUpstreamProgrammes used XNode.ReadFrom inside a while(reader.Read()) loop, which advances the reader twice per element. For minified XMLTV (no whitespace between programme tags) every other programme was silently skipped from the guide. (2) Offset parsing failure on +HH:MM style offsets: TryParseXmltvTime only accepted +HHMM. Modern XMLTV providers that use the ISO 8601 style with a colon (e.g. +02:00) had their programmes parsed as UTC and filtered out as in-the-past. (3) Aggressive past-filter dropped currently-playing shows: any programme ending even a second before now was discarded, so minor clock skew between provider and server made the now-playing show disappear from the guide. Now: 1-hour grace period. Also: extra date format support (YYYYMMDDHHMM and YYYYMMDD as accepted alternatives) and 7 new tests covering offset forms and short date formats. Follow-up marks TryParseXmltvTime as internal so the tests can call it directly instead of via reflection.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.4.0/jellyfin-xtream-library_1.36.4.0.zip",
-        "checksum": "20872f591083be9bf685b92972932abb",
-        "timestamp": "2026-06-02T21:18:00Z"
-      },
-      {
-        "version": "1.36.3.0",
-        "changelog": "Recovers configuration for users who lost their plugin settings across the v1.33.3.0 GUID change (#49). Some users who upgraded from v1.31.44.0 (the [MOVED] shim) to v1.33.3.0+ (the new GUID build) ended up with their pre-v1.32 settings (BaseUrl, folder mappings, etc.) orphaned in a sibling XML file while the new plugin started against an empty in-memory config. The existing migration only operated on what Jellyfin had already loaded, so the orphan was never recovered. This release adds a constructor-time importer that runs before the existing migration: when the in-memory config looks completely fresh, scan the configurations directory for two known historical config filenames our plugin has ever written, validate each candidate against a schema sentinel (folder mappings or TMDb/TVDb override maps populated) that distinguishes our schema from the upstream Kevin Jilissen Jellyfin.Xtream plugin's, copy the legacy fields in, and rename the chosen orphan to .migrated-<date>.bak so it is not picked up on next boot. Defensive: strict trigger gate (only fires when Providers is empty AND BaseUrl is empty AND folder mappings are empty); schema sentinel prevents credential cross-pollination if both plugins are installed side-by-side; orphan is renamed not deleted, preserving an audit copy; rename failure is non-fatal because the import already succeeded in memory. Third installment of the multi-provider migration story (v1.33.1.0 fixed endpoint gating, v1.33.2.0 fixed the pre-v1.32 startup migration, v1.36.1.0 fixed URL construction, this fixes the case where the migration target file is not the file the user's data is in). No configuration change required.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.3.0/jellyfin-xtream-library_1.36.3.0.zip",
-        "checksum": "99dcf0e56dac5813a2e53eeb29bf7207",
-        "timestamp": "2026-06-02T22:30:00Z"
-      },
-      {
-        "version": "1.36.2.0",
-        "changelog": "Clarifies the Enable Native Tuner UI to prevent duplicate Live TV channels (#50). The previous checkbox description told users to add the Xtream Library tuner manually under Dashboard > Live TV > Tuner Devices, but Jellyfin does not show ITunerHost-based tuners there (that list is only for manually-added tuners). Users who followed the instruction and also pasted the M3U URL as a manual HDHomeRun tuner ended up with both code paths publishing the same channel set, hence every channel appearing twice in the guide. This release replaces the misleading instruction with an accurate one, adds a 'Pick one tuner mode' warning inline under the Native Tuner checkbox explicitly calling out the duplicate-channels symptom, notes the transcoding-vs-remux trade-off so users can choose the right mode for their hardware, and adds a matching warning in the Setup URLs section so the cross-reference is visible from either entry point. No tuner code change; both modes remain fully supported.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.2.0/jellyfin-xtream-library_1.36.2.0.zip",
-        "checksum": "7eaddedd9eee376a7a3b8aef489b0ab8",
-        "timestamp": "2026-06-02T01:30:00Z"
-      },
-      {
-        "version": "1.36.1.0",
-        "changelog": "Fixes Live TV playback on multi-provider configs (#46 follow-up). Users who configured their provider exclusively via the multi-provider UI (introduced in v1.32) were getting unplayable channels because the M3U export and native tuner both emitted stream URLs shaped like /live///{streamId}.ts — no scheme, no server, no credentials. FFmpeg refused with 'No such file or directory'. Cause: BuildStreamUrl and BuildCatchupUrl were the last consumers still reading the legacy single-provider config fields directly; on a fresh v1.32+ install those fields are empty and only Providers[0] is populated. Fix: a new ResolveLiveTvProvider helper resolves credentials from Providers[0] first (falling back to legacy fields for any config caught mid-migration), and all three URL builders route through it. Third installment of the multi-provider migration story (v1.33.1.0 fixed endpoint gating, v1.33.2.0 fixed the pre-v1.32 startup migration, this fixes URL construction). No configuration change required.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.1.0/jellyfin-xtream-library_1.36.1.0.zip",
-        "checksum": "2f334b1396183b566967ce9108b479a2",
-        "timestamp": "2026-06-02T00:15:00Z"
-      },
-      {
-        "version": "1.36.0.0",
-        "changelog": "Live TV channel counts on the sync status dashboard (#48). After each sync, the dashboard panel now shows a Live TV row with the total channel count and added/updated/deleted split, matching the existing Movies and Series rows. The same counters appear in the live progress display while a sync is running. How it works: at the end of SyncAsync the plugin fetches the current channel set, compares it against a persisted JSON snapshot (live-tv-channels.json in the plugin data folder), and writes the new snapshot back. A channel counts as 'updated' when its name, EPG channel id, logo URL, or channel number differs. The M3U/EPG cache is invalidated as part of the refresh so Jellyfin's next tuner poll sees the new data. A Live TV refresh failure no longer aborts the sync — VOD/Series counts persist and the error message is surfaced separately. First sync after upgrade shows every channel as 'added' because no previous snapshot exists yet.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.0.0/jellyfin-xtream-library_1.36.0.0.zip",
-        "checksum": "fc5323f8e42544bc1a6209214e25938e",
-        "timestamp": "2026-05-31T23:30:00Z"
-      },
-      {
-        "version": "1.35.2.0",
-        "changelog": "Live TV channel checkboxes track parent category state (#46 follow-up). After clicking the master Deselect All button in Pick mode, expanding any (now-deselected) category showed every channel underneath as ticked, even though those channels would not actually sync. Cause: per-channel checkbox state was computed purely from the excludedLiveStreamIds list, and v1.35.0.0's correct decision to clear that list on master Deselect All collapsed the rendering logic to 'all channels checked because nothing is excluded'. Fix: channel checkboxes now gate on the parent category checkbox as well, render unchecked with an italic hint when the parent is deselected, auto-tick the parent when the user re-enables an individual channel or panel-level Select All, and re-render any expanded child panel immediately when the category checkbox flips. No configuration change required.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.35.2.0/jellyfin-xtream-library_1.35.2.0.zip",
-        "checksum": "56d8f36a5f1ba7d6b1cc1b34f7bf1ea6",
-        "timestamp": "2026-05-31T20:34:00Z"
-      },
-      {
-        "version": "1.35.1.0",
-        "changelog": "Truncate STRM filenames to 255 bytes (fixes #47). Series with very long episode titles (e.g. one Interspecies Reviewers episode whose provider-supplied title runs to 240+ characters) silently failed to sync because the resulting STRM filename exceeded Linux's NAME_MAX per-component cap, throwing PathTooLongException on every sync attempt. The episode and movie filename builders now run their output through a UTF-8 byte-aware truncation step that preserves the .strm extension, respects multi-byte character boundaries (Japanese, emoji, etc.), and trims trailing separator punctuation introduced by the cut. 255 bytes is the cross-platform safe ceiling — Windows NTFS and macOS APFS use 255 UTF-16 code units which is laxer. No configuration change required.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.35.1.0/jellyfin-xtream-library_1.35.1.0.zip",
-        "checksum": "94263657d261851e0b3dedd66b637313",
-        "timestamp": "2026-05-31T10:35:00Z"
-      },
-      {
-        "version": "1.35.0.0",
-        "changelog": "Live TV channel selection overhaul (fixes #46). Three intertwined bugs are fixed: (1) category-level Deselect All now actually drops per-channel exclusions; (2) empty category selection no longer means 'sync all' — there is now an explicit Sync ALL vs Pick specific channels mode toggle; (3) new top-of-list toolbar (Select all / Deselect all / Clear channel exclusions), live counter, and client-side category search make handpicking a small subset fast. Existing configs with populated Live TV selections are auto-migrated to Custom mode to preserve behavior. Fresh installs stay on Sync ALL by default. Heads-up: configs with channel exclusions but no category selection land on Custom + empty selection (= zero channels) — click 'Select all' if that is not what you want.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.35.0.0/jellyfin-xtream-library_1.35.0.0.zip",
-        "checksum": "dd81851254253257a243abc9a09ede76",
-        "timestamp": "2026-05-31T09:50:00Z"
-      },
-      {
-        "version": "1.34.0.0",
-        "changelog": "Preserve full EPG metadata from upstream XMLTV (fixes #42): the plugin previously generated XMLTV from Xtream's JSON endpoint which only exposes title and description. It now passes the upstream xmltv.php through verbatim, preserving categories, ratings, credits, icons, dates, and star-ratings. Jellyfin can again categorize Live TV programs by genre. Falls back to the old JSON-based fetch if the upstream XMLTV is unavailable.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.34.0.0/jellyfin-xtream-library_1.34.0.0.zip",
-        "checksum": "3bf4c69e7815c276a484bd1a22e860a9",
-        "timestamp": "2026-05-20T22:00:00Z"
-      },
-      {
-        "version": "1.33.3.0",
-        "changelog": "Fix overlapping plugin GUID (#43): the boilerplate placeholder GUID a1b2c3d4-e5f6-7890-abcd-ef1234567890 was shared with three unrelated Jellyfin plugins. Replaced with a freshly-generated random GUID. NOTE: existing installs are treated as a different plugin after upgrade — uninstall the old 'Xtream Library' entry from Jellyfin and reinstall to pick up this version. Plugin configuration is preserved across the reinstall.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.3.0/jellyfin-xtream-library_1.33.3.0.zip",
-        "checksum": "26659da035d6d3d879787b60d7e2520e",
-        "timestamp": "2026-05-20T00:00:00Z"
-      }
-    ]
-  },
-  {
-    "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "name": "Xtream Library (Dev)",
-    "description": "EXPERIMENTAL: Sync Xtream VOD and Series content to native Jellyfin libraries via STRM files. Includes native tuner (may cause playback regression).",
-    "overview": "Development channel for Xtream Library plugin. Contains experimental features like native tuner host. Add this manifest URL to test pre-release builds.",
-    "owner": "firestaerter3",
-    "category": "General",
-    "versions": [
-      {
-        "version": "1.33.2.0",
-        "changelog": "Fix legacy-config migration silently failing on upgrades from pre-v1.32 releases. The [Obsolete] attribute on the legacy single-provider fields caused .NET's XmlSerializer to skip them during deserialization, so the on-startup migration into Providers[0] never ran. After this fix the existing provider settings are picked up on first restart. Pairs with v1.33.1.0's Live TV credential-check fix.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.2.0/jellyfin-xtream-library_1.33.2.0.zip",
-        "checksum": "6a1f6ea7d6bf89a46bd8c7c6f924f5b9",
-        "timestamp": "2026-05-17T18:00:00Z"
-      },
-      {
-        "version": "1.33.1.0",
-        "changelog": "Fix Live TV on multi-provider setups: Load Categories (and M3U/EPG/Catchup outputs) returned \"Failed to load. Check credentials.\" when the provider was configured only via the multi-provider UI. Endpoints now read credentials from Providers[0] like the rest of the plugin. Closes #17.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.1.0/jellyfin-xtream-library_1.33.1.0.zip",
-        "checksum": "e8fd93f7a7a99f38288567323306abdd",
-        "timestamp": "2026-05-17T16:00:00Z"
-      },
-      {
-        "version": "1.33.0.0",
-        "changelog": "Per-channel Live TV selection (fixes #17): expand any Live TV category in the config UI to see its channels and uncheck the ones you don't want synced. Select all / Deselect all per category. Channels are fetched on demand. Existing configs keep current behavior. Refresh the Live TV cache after editing selections.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.0.0/jellyfin-xtream-library_1.33.0.0.zip",
-        "checksum": "8d417728f06599cd925bcd672de9de94",
-        "timestamp": "2026-05-17T00:00:00Z"
-      },
-      {
-        "version": "1.32.0.0",
-        "changelog": "Add multi-provider support: configure N Xtream providers each with its own credentials and library path. Providers sync sequentially to separate Jellyfin library folders. Provider selector bar in the config UI. Existing single-provider configs are auto-migrated on first startup. Note: first sync after upgrading will be a full sync.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.32.0.0/jellyfin-xtream-library_1.32.0.0.zip",
-        "checksum": "a3687f2f314c18ebec301cfd998787ce",
-        "timestamp": "2026-05-12T00:00:00Z"
-      },
-      {
-        "version": "1.31.44.0",
-        "changelog": "⚠️ This plugin has moved to a new GUID. You won't see future updates on this entry. After updating, open the plugin catalog and install 'Xtream Library' (it will appear as a separate entry with the new GUID), then uninstall this plugin and restart Jellyfin. Provider settings, library folders, and channel selections carry over automatically. See https://github.com/firestaerter3/Jellyfin-Xtream-Library/issues/46 for context.",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.44.0/jellyfin-xtream-library_1.31.44.0.zip",
-        "checksum": "01d336978db2683b565a246d6930e638",
-        "timestamp": "2026-05-31T07:56:00Z"
-      },
-      {
-        "version": "1.31.43.0",
-        "changelog": "Fix connection test crash when provider returns \"N/A\" for active_cons or max_connections: some Xtream providers send non-numeric strings for these user info fields, which now fall back to 0 instead of throwing a deserialization error (fixes #39).",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.43.0/jellyfin-xtream-library_1.31.43.0.zip",
-        "checksum": "ea3455f89c0d1b6e68a0afc5e339e26a",
-        "timestamp": "2026-05-08T00:00:00Z"
-      },
-      {
-        "version": "1.31.25.0",
-        "changelog": "Fix StringBoolConverter crash on integer values, channel mapping race condition during guide refresh, and add diagnostic logging",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.25.0/jellyfin-xtream-library_1.31.25.0.zip",
-        "checksum": "0141df3676d3c10aa355e8e992442842",
-        "timestamp": "2026-02-12T23:10:00Z"
-      },
-      {
-        "version": "1.31.24.0",
-        "changelog": "Handle Jellyfin hdhr_ channel ID remapping — map channel numbers back to stream IDs for correct playback",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.24.0/jellyfin-xtream-library_1.31.24.0.zip",
-        "checksum": "f67bbd1e2bb6f2fdca362eee41aac56d",
-        "timestamp": "2026-02-12T21:45:00Z"
-      },
-      {
-        "version": "1.31.23.0",
-        "changelog": "Fix channel routing — throw FileNotFoundException for non-owned channels so Jellyfin falls through to M3U tuner",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.23.0/jellyfin-xtream-library_1.31.23.0.zip",
-        "checksum": "4b22d0402bd35d37a3ffd39a8b2b9c28",
-        "timestamp": "2026-02-12T21:30:00Z"
-      },
-      {
-        "version": "1.31.22.0",
-        "changelog": "Fix playback error for M3U tuner channels — return null from GetChannelStream for non-owned channels",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.22.0/jellyfin-xtream-library_1.31.22.0.zip",
-        "checksum": "be42bacb195f22837cf3503f1183a46c",
-        "timestamp": "2026-02-12T21:20:00Z"
-      },
-      {
-        "version": "1.31.21.0",
-        "changelog": "Fix tuner crash for non-xtream channel IDs + HLS latency tuning for near-instant channel switching",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.21.0/jellyfin-xtream-library_1.31.21.0.zip",
-        "checksum": "73ab2117bcb06191870b84ef26e2a876",
-        "timestamp": "2026-02-12T21:15:00Z"
-      },
-      {
-        "version": "1.31.20.0",
-        "changelog": "HLS latency tuning - enable remux instead of full transcode for near-instant channel switching (<1s)",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.20.0/jellyfin-xtream-library_1.31.20.0.zip",
-        "checksum": "d62d5907d0f719de4f71bbd21f493bfb",
-        "timestamp": "2026-02-12T21:00:00Z"
-      },
-      {
-        "version": "1.31.19.0",
-        "changelog": "Add native tuner host for zero-probe Live TV - cuts channel switch time from ~6s to ~3s",
-        "targetAbi": "10.11.0.0",
-        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.19.0/jellyfin-xtream-library_1.31.19.0.zip",
-        "checksum": "4b6fa0ddb06185affc6f5f03da0555b6",
-        "timestamp": "2026-02-12T19:00:00Z"
-      }
-    ]
-  }
+    {
+        "guid": "63ba5fcd-c8ce-421a-83e8-ba0b11030d53",
+        "name": "Xtream Library (Dev)",
+        "description": "EXPERIMENTAL: Sync Xtream VOD and Series content to native Jellyfin libraries via STRM files. Includes native tuner (may cause playback regression).",
+        "overview": "Development channel for Xtream Library plugin. Contains experimental features like native tuner host. Add this manifest URL to test pre-release builds.",
+        "owner": "firestaerter3",
+        "category": "General",
+        "versions": [
+            {
+                "version": "1.37.0.0",
+                "changelog": "Adds per-item selection for Movies and Series, matching Live TV per-channel selection. In Single folder mode, expand a Movie or Series category to enable or disable individual titles. All titles stay enabled by default; unticked titles are skipped on sync and removed on the next sync if they already exist. Resolves #54.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.37.0.0/jellyfin-xtream-library_1.37.0.0.zip",
+                "checksum": "066b9634c107ff53ac47bf3c5e263501",
+                "timestamp": "2026-06-13T17:30:00Z"
+            },
+            {
+                "version": "1.36.7.0",
+                "changelog": "Adds an in-Jellyfin 'Use beta channel' toggle under Dashboard > Plugins > Xtream Library > Settings > General > Updates. When enabled, the plugin registers its beta plugin manifest URL with Jellyfin's plugin repository list so pre-release versions appear in Dashboard > Plugins > Catalog like any other plugin. Disabling removes the entry. State persists across Jellyfin restarts. Closes the canary-adoption gap surfaced by #52: until now the only way to opt into betas was to manually add a custom Catalog URL, a step almost no users discovered. As of v1.36.6.0 only a handful of betas had ever been installed which made the canary essentially non-functional. Moving the opt-in into the plugin's own UI is the smallest change that genuinely lowers the friction for users who want to help catch regressions before they reach stable. New hosted-service component BetaChannelManager reconciles the repository list on boot and on every plugin-config save, with IOException rollback so a transient disk error never leaves in-memory state out of sync with system.xml.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.7.0/jellyfin-xtream-library_1.36.7.0.zip",
+                "checksum": "950990dbec1a75b227fc51d5d73b772a",
+                "timestamp": "2026-06-05T06:20:00Z"
+            },
+            {
+                "version": "1.36.6.0",
+                "changelog": "Adds a direct 'Xtream Library' entry to the Jellyfin admin dashboard sidebar (#36, thanks @dwizzle204). Sets EnableInMainMenu = true on the embedded config page so the sidebar surfaces an Xtream Library entry directly under Dashboard > Plugins, alongside the existing Dashboard > Plugins > Xtream Library path. Pure UX improvement, no functional change. Cherry-picked from the original PR with author credit preserved via Co-Authored-By, the original PR's new PluginTests.cs collided with the unrelated test file added for BUG-009, so the sidebar-registration assertion is now an additional test on the existing PluginTests.cs.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.6.0/jellyfin-xtream-library_1.36.6.0.zip",
+                "checksum": "9423319a5d9c774004a5385ec0772c68",
+                "timestamp": "2026-06-03T00:45:00Z"
+            },
+            {
+                "version": "1.36.5.0",
+                "changelog": "Fixes live-stream list fetch failures on Xtream providers that return the 'added' field as a formatted date string (e.g. '22/05/2024 10:00:00') instead of a Unix timestamp (#41, thanks @gamegninou). LiveStreamInfo.Added was previously typed as long, which forced strict integer JSON deserialization and threw JsonSerializationException for the entire live-stream list whenever the provider used the string variant. The field has zero readers in the codebase, it only exists for round-trip JSON purposes, so the loosest type that accepts every provider variant is right. Changed to string, matching the sibling StreamInfo.Added (VOD movies) which has always been a string. Intentionally simpler than the converter-based approach proposed in #41, which tried MM/dd before dd/MM and would have silently mis-parsed ambiguous dates with day \u2264 12. 4 new deserialization tests.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.5.0/jellyfin-xtream-library_1.36.5.0.zip",
+                "checksum": "7bb56f711a119e7d835de13fc138b393",
+                "timestamp": "2026-06-03T00:30:00Z"
+            },
+            {
+                "version": "1.36.4.0",
+                "changelog": "Fixes three distinct EPG parsing bugs (#45, thanks @FilipBB). (1) XmlReader double-advance: AppendUpstreamProgrammes used XNode.ReadFrom inside a while(reader.Read()) loop, which advances the reader twice per element. For minified XMLTV (no whitespace between programme tags) every other programme was silently skipped from the guide. (2) Offset parsing failure on +HH:MM style offsets: TryParseXmltvTime only accepted +HHMM. Modern XMLTV providers that use the ISO 8601 style with a colon (e.g. +02:00) had their programmes parsed as UTC and filtered out as in-the-past. (3) Aggressive past-filter dropped currently-playing shows: any programme ending even a second before now was discarded, so minor clock skew between provider and server made the now-playing show disappear from the guide. Now: 1-hour grace period. Also: extra date format support (YYYYMMDDHHMM and YYYYMMDD as accepted alternatives) and 7 new tests covering offset forms and short date formats. Follow-up marks TryParseXmltvTime as internal so the tests can call it directly instead of via reflection.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.4.0/jellyfin-xtream-library_1.36.4.0.zip",
+                "checksum": "20872f591083be9bf685b92972932abb",
+                "timestamp": "2026-06-02T21:18:00Z"
+            },
+            {
+                "version": "1.36.3.0",
+                "changelog": "Recovers configuration for users who lost their plugin settings across the v1.33.3.0 GUID change (#49). Some users who upgraded from v1.31.44.0 (the [MOVED] shim) to v1.33.3.0+ (the new GUID build) ended up with their pre-v1.32 settings (BaseUrl, folder mappings, etc.) orphaned in a sibling XML file while the new plugin started against an empty in-memory config. The existing migration only operated on what Jellyfin had already loaded, so the orphan was never recovered. This release adds a constructor-time importer that runs before the existing migration: when the in-memory config looks completely fresh, scan the configurations directory for two known historical config filenames our plugin has ever written, validate each candidate against a schema sentinel (folder mappings or TMDb/TVDb override maps populated) that distinguishes our schema from the upstream Kevin Jilissen Jellyfin.Xtream plugin's, copy the legacy fields in, and rename the chosen orphan to .migrated-<date>.bak so it is not picked up on next boot. Defensive: strict trigger gate (only fires when Providers is empty AND BaseUrl is empty AND folder mappings are empty); schema sentinel prevents credential cross-pollination if both plugins are installed side-by-side; orphan is renamed not deleted, preserving an audit copy; rename failure is non-fatal because the import already succeeded in memory. Third installment of the multi-provider migration story (v1.33.1.0 fixed endpoint gating, v1.33.2.0 fixed the pre-v1.32 startup migration, v1.36.1.0 fixed URL construction, this fixes the case where the migration target file is not the file the user's data is in). No configuration change required.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.3.0/jellyfin-xtream-library_1.36.3.0.zip",
+                "checksum": "99dcf0e56dac5813a2e53eeb29bf7207",
+                "timestamp": "2026-06-02T22:30:00Z"
+            },
+            {
+                "version": "1.36.2.0",
+                "changelog": "Clarifies the Enable Native Tuner UI to prevent duplicate Live TV channels (#50). The previous checkbox description told users to add the Xtream Library tuner manually under Dashboard > Live TV > Tuner Devices, but Jellyfin does not show ITunerHost-based tuners there (that list is only for manually-added tuners). Users who followed the instruction and also pasted the M3U URL as a manual HDHomeRun tuner ended up with both code paths publishing the same channel set, hence every channel appearing twice in the guide. This release replaces the misleading instruction with an accurate one, adds a 'Pick one tuner mode' warning inline under the Native Tuner checkbox explicitly calling out the duplicate-channels symptom, notes the transcoding-vs-remux trade-off so users can choose the right mode for their hardware, and adds a matching warning in the Setup URLs section so the cross-reference is visible from either entry point. No tuner code change; both modes remain fully supported.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.2.0/jellyfin-xtream-library_1.36.2.0.zip",
+                "checksum": "7eaddedd9eee376a7a3b8aef489b0ab8",
+                "timestamp": "2026-06-02T01:30:00Z"
+            },
+            {
+                "version": "1.36.1.0",
+                "changelog": "Fixes Live TV playback on multi-provider configs (#46 follow-up). Users who configured their provider exclusively via the multi-provider UI (introduced in v1.32) were getting unplayable channels because the M3U export and native tuner both emitted stream URLs shaped like /live///{streamId}.ts \u2014 no scheme, no server, no credentials. FFmpeg refused with 'No such file or directory'. Cause: BuildStreamUrl and BuildCatchupUrl were the last consumers still reading the legacy single-provider config fields directly; on a fresh v1.32+ install those fields are empty and only Providers[0] is populated. Fix: a new ResolveLiveTvProvider helper resolves credentials from Providers[0] first (falling back to legacy fields for any config caught mid-migration), and all three URL builders route through it. Third installment of the multi-provider migration story (v1.33.1.0 fixed endpoint gating, v1.33.2.0 fixed the pre-v1.32 startup migration, this fixes URL construction). No configuration change required.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.1.0/jellyfin-xtream-library_1.36.1.0.zip",
+                "checksum": "2f334b1396183b566967ce9108b479a2",
+                "timestamp": "2026-06-02T00:15:00Z"
+            },
+            {
+                "version": "1.36.0.0",
+                "changelog": "Live TV channel counts on the sync status dashboard (#48). After each sync, the dashboard panel now shows a Live TV row with the total channel count and added/updated/deleted split, matching the existing Movies and Series rows. The same counters appear in the live progress display while a sync is running. How it works: at the end of SyncAsync the plugin fetches the current channel set, compares it against a persisted JSON snapshot (live-tv-channels.json in the plugin data folder), and writes the new snapshot back. A channel counts as 'updated' when its name, EPG channel id, logo URL, or channel number differs. The M3U/EPG cache is invalidated as part of the refresh so Jellyfin's next tuner poll sees the new data. A Live TV refresh failure no longer aborts the sync \u2014 VOD/Series counts persist and the error message is surfaced separately. First sync after upgrade shows every channel as 'added' because no previous snapshot exists yet.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.36.0.0/jellyfin-xtream-library_1.36.0.0.zip",
+                "checksum": "fc5323f8e42544bc1a6209214e25938e",
+                "timestamp": "2026-05-31T23:30:00Z"
+            },
+            {
+                "version": "1.35.2.0",
+                "changelog": "Live TV channel checkboxes track parent category state (#46 follow-up). After clicking the master Deselect All button in Pick mode, expanding any (now-deselected) category showed every channel underneath as ticked, even though those channels would not actually sync. Cause: per-channel checkbox state was computed purely from the excludedLiveStreamIds list, and v1.35.0.0's correct decision to clear that list on master Deselect All collapsed the rendering logic to 'all channels checked because nothing is excluded'. Fix: channel checkboxes now gate on the parent category checkbox as well, render unchecked with an italic hint when the parent is deselected, auto-tick the parent when the user re-enables an individual channel or panel-level Select All, and re-render any expanded child panel immediately when the category checkbox flips. No configuration change required.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.35.2.0/jellyfin-xtream-library_1.35.2.0.zip",
+                "checksum": "56d8f36a5f1ba7d6b1cc1b34f7bf1ea6",
+                "timestamp": "2026-05-31T20:34:00Z"
+            },
+            {
+                "version": "1.35.1.0",
+                "changelog": "Truncate STRM filenames to 255 bytes (fixes #47). Series with very long episode titles (e.g. one Interspecies Reviewers episode whose provider-supplied title runs to 240+ characters) silently failed to sync because the resulting STRM filename exceeded Linux's NAME_MAX per-component cap, throwing PathTooLongException on every sync attempt. The episode and movie filename builders now run their output through a UTF-8 byte-aware truncation step that preserves the .strm extension, respects multi-byte character boundaries (Japanese, emoji, etc.), and trims trailing separator punctuation introduced by the cut. 255 bytes is the cross-platform safe ceiling \u2014 Windows NTFS and macOS APFS use 255 UTF-16 code units which is laxer. No configuration change required.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.35.1.0/jellyfin-xtream-library_1.35.1.0.zip",
+                "checksum": "94263657d261851e0b3dedd66b637313",
+                "timestamp": "2026-05-31T10:35:00Z"
+            },
+            {
+                "version": "1.35.0.0",
+                "changelog": "Live TV channel selection overhaul (fixes #46). Three intertwined bugs are fixed: (1) category-level Deselect All now actually drops per-channel exclusions; (2) empty category selection no longer means 'sync all' \u2014 there is now an explicit Sync ALL vs Pick specific channels mode toggle; (3) new top-of-list toolbar (Select all / Deselect all / Clear channel exclusions), live counter, and client-side category search make handpicking a small subset fast. Existing configs with populated Live TV selections are auto-migrated to Custom mode to preserve behavior. Fresh installs stay on Sync ALL by default. Heads-up: configs with channel exclusions but no category selection land on Custom + empty selection (= zero channels) \u2014 click 'Select all' if that is not what you want.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.35.0.0/jellyfin-xtream-library_1.35.0.0.zip",
+                "checksum": "dd81851254253257a243abc9a09ede76",
+                "timestamp": "2026-05-31T09:50:00Z"
+            },
+            {
+                "version": "1.34.0.0",
+                "changelog": "Preserve full EPG metadata from upstream XMLTV (fixes #42): the plugin previously generated XMLTV from Xtream's JSON endpoint which only exposes title and description. It now passes the upstream xmltv.php through verbatim, preserving categories, ratings, credits, icons, dates, and star-ratings. Jellyfin can again categorize Live TV programs by genre. Falls back to the old JSON-based fetch if the upstream XMLTV is unavailable.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.34.0.0/jellyfin-xtream-library_1.34.0.0.zip",
+                "checksum": "3bf4c69e7815c276a484bd1a22e860a9",
+                "timestamp": "2026-05-20T22:00:00Z"
+            },
+            {
+                "version": "1.33.3.0",
+                "changelog": "Fix overlapping plugin GUID (#43): the boilerplate placeholder GUID a1b2c3d4-e5f6-7890-abcd-ef1234567890 was shared with three unrelated Jellyfin plugins. Replaced with a freshly-generated random GUID. NOTE: existing installs are treated as a different plugin after upgrade \u2014 uninstall the old 'Xtream Library' entry from Jellyfin and reinstall to pick up this version. Plugin configuration is preserved across the reinstall.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.3.0/jellyfin-xtream-library_1.33.3.0.zip",
+                "checksum": "26659da035d6d3d879787b60d7e2520e",
+                "timestamp": "2026-05-20T00:00:00Z"
+            }
+        ]
+    },
+    {
+        "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "name": "Xtream Library (Dev)",
+        "description": "EXPERIMENTAL: Sync Xtream VOD and Series content to native Jellyfin libraries via STRM files. Includes native tuner (may cause playback regression).",
+        "overview": "Development channel for Xtream Library plugin. Contains experimental features like native tuner host. Add this manifest URL to test pre-release builds.",
+        "owner": "firestaerter3",
+        "category": "General",
+        "versions": [
+            {
+                "version": "1.33.2.0",
+                "changelog": "Fix legacy-config migration silently failing on upgrades from pre-v1.32 releases. The [Obsolete] attribute on the legacy single-provider fields caused .NET's XmlSerializer to skip them during deserialization, so the on-startup migration into Providers[0] never ran. After this fix the existing provider settings are picked up on first restart. Pairs with v1.33.1.0's Live TV credential-check fix.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.2.0/jellyfin-xtream-library_1.33.2.0.zip",
+                "checksum": "6a1f6ea7d6bf89a46bd8c7c6f924f5b9",
+                "timestamp": "2026-05-17T18:00:00Z"
+            },
+            {
+                "version": "1.33.1.0",
+                "changelog": "Fix Live TV on multi-provider setups: Load Categories (and M3U/EPG/Catchup outputs) returned \"Failed to load. Check credentials.\" when the provider was configured only via the multi-provider UI. Endpoints now read credentials from Providers[0] like the rest of the plugin. Closes #17.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.1.0/jellyfin-xtream-library_1.33.1.0.zip",
+                "checksum": "e8fd93f7a7a99f38288567323306abdd",
+                "timestamp": "2026-05-17T16:00:00Z"
+            },
+            {
+                "version": "1.33.0.0",
+                "changelog": "Per-channel Live TV selection (fixes #17): expand any Live TV category in the config UI to see its channels and uncheck the ones you don't want synced. Select all / Deselect all per category. Channels are fetched on demand. Existing configs keep current behavior. Refresh the Live TV cache after editing selections.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.33.0.0/jellyfin-xtream-library_1.33.0.0.zip",
+                "checksum": "8d417728f06599cd925bcd672de9de94",
+                "timestamp": "2026-05-17T00:00:00Z"
+            },
+            {
+                "version": "1.32.0.0",
+                "changelog": "Add multi-provider support: configure N Xtream providers each with its own credentials and library path. Providers sync sequentially to separate Jellyfin library folders. Provider selector bar in the config UI. Existing single-provider configs are auto-migrated on first startup. Note: first sync after upgrading will be a full sync.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.32.0.0/jellyfin-xtream-library_1.32.0.0.zip",
+                "checksum": "a3687f2f314c18ebec301cfd998787ce",
+                "timestamp": "2026-05-12T00:00:00Z"
+            },
+            {
+                "version": "1.31.44.0",
+                "changelog": "\u26a0\ufe0f This plugin has moved to a new GUID. You won't see future updates on this entry. After updating, open the plugin catalog and install 'Xtream Library' (it will appear as a separate entry with the new GUID), then uninstall this plugin and restart Jellyfin. Provider settings, library folders, and channel selections carry over automatically. See https://github.com/firestaerter3/Jellyfin-Xtream-Library/issues/46 for context.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.44.0/jellyfin-xtream-library_1.31.44.0.zip",
+                "checksum": "01d336978db2683b565a246d6930e638",
+                "timestamp": "2026-05-31T07:56:00Z"
+            },
+            {
+                "version": "1.31.43.0",
+                "changelog": "Fix connection test crash when provider returns \"N/A\" for active_cons or max_connections: some Xtream providers send non-numeric strings for these user info fields, which now fall back to 0 instead of throwing a deserialization error (fixes #39).",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.43.0/jellyfin-xtream-library_1.31.43.0.zip",
+                "checksum": "ea3455f89c0d1b6e68a0afc5e339e26a",
+                "timestamp": "2026-05-08T00:00:00Z"
+            },
+            {
+                "version": "1.31.25.0",
+                "changelog": "Fix StringBoolConverter crash on integer values, channel mapping race condition during guide refresh, and add diagnostic logging",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.25.0/jellyfin-xtream-library_1.31.25.0.zip",
+                "checksum": "0141df3676d3c10aa355e8e992442842",
+                "timestamp": "2026-02-12T23:10:00Z"
+            },
+            {
+                "version": "1.31.24.0",
+                "changelog": "Handle Jellyfin hdhr_ channel ID remapping \u2014 map channel numbers back to stream IDs for correct playback",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.24.0/jellyfin-xtream-library_1.31.24.0.zip",
+                "checksum": "f67bbd1e2bb6f2fdca362eee41aac56d",
+                "timestamp": "2026-02-12T21:45:00Z"
+            },
+            {
+                "version": "1.31.23.0",
+                "changelog": "Fix channel routing \u2014 throw FileNotFoundException for non-owned channels so Jellyfin falls through to M3U tuner",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.23.0/jellyfin-xtream-library_1.31.23.0.zip",
+                "checksum": "4b22d0402bd35d37a3ffd39a8b2b9c28",
+                "timestamp": "2026-02-12T21:30:00Z"
+            },
+            {
+                "version": "1.31.22.0",
+                "changelog": "Fix playback error for M3U tuner channels \u2014 return null from GetChannelStream for non-owned channels",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.22.0/jellyfin-xtream-library_1.31.22.0.zip",
+                "checksum": "be42bacb195f22837cf3503f1183a46c",
+                "timestamp": "2026-02-12T21:20:00Z"
+            },
+            {
+                "version": "1.31.21.0",
+                "changelog": "Fix tuner crash for non-xtream channel IDs + HLS latency tuning for near-instant channel switching",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.21.0/jellyfin-xtream-library_1.31.21.0.zip",
+                "checksum": "73ab2117bcb06191870b84ef26e2a876",
+                "timestamp": "2026-02-12T21:15:00Z"
+            },
+            {
+                "version": "1.31.20.0",
+                "changelog": "HLS latency tuning - enable remux instead of full transcode for near-instant channel switching (<1s)",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.20.0/jellyfin-xtream-library_1.31.20.0.zip",
+                "checksum": "d62d5907d0f719de4f71bbd21f493bfb",
+                "timestamp": "2026-02-12T21:00:00Z"
+            },
+            {
+                "version": "1.31.19.0",
+                "changelog": "Add native tuner host for zero-probe Live TV - cuts channel switch time from ~6s to ~3s",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.31.19.0/jellyfin-xtream-library_1.31.19.0.zip",
+                "checksum": "4b6fa0ddb06185affc6f5f03da0555b6",
+                "timestamp": "2026-02-12T19:00:00Z"
+            }
+        ]
+    }
 ]
