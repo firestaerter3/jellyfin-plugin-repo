@@ -8,6 +8,46 @@
     "category": "General",
     "versions": [
       {
+        "version": "1.41.0.0",
+        "changelog": "Channel Overrides now accept an optional 4th field: StreamId=Name|Number|LogoUrl|Tags (comma-separated). Tags are applied to Live TV channels and can be used for Jellyfin access control (show/hide channels per user). See PR #61.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.41.0.0/jellyfin-xtream-library_1.41.0.0.zip",
+        "checksum": "e213cffc30a5fd45b96ef37e38e1afec",
+        "timestamp": "2026-07-03T17:56:18Z"
+      },
+      {
+        "version": "1.40.0.0",
+        "changelog": "Fix duplicate series folders when TVDB/TMDB ID lookup fails (rate limited, timeout, or no match). The plugin now reuses the existing named folder instead of creating a duplicate with no identifier suffix.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.40.0.0/jellyfin-xtream-library_1.40.0.0.zip",
+        "checksum": "69cd4b7652f866d47a2447c6fb683395",
+        "timestamp": "2026-07-03T08:50:20Z"
+      },
+      {
+        "version": "1.39.0.0",
+        "changelog": "Live TV channels are now grouped by their Xtream category. Each channel is tagged with its provider category, so the Jellyfin Live TV guide shows category groups instead of one flat list. Applies to native tuner (ChannelGroup) and M3U/XMLTV (group-title).",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.39.0.0/jellyfin-xtream-library_1.39.0.0.zip",
+        "checksum": "cf103bd7a1c30fdc8c4127adb8e5aec8",
+        "timestamp": "2026-06-14T21:46:00Z"
+      },
+      {
+        "version": "1.38.0.0",
+        "changelog": "Channel Override logos can now be a local file path (e.g. /media/logos/fox.png), not just an http(s) URL. The plugin serves local logos over HTTP. Resolves #53.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.38.0.0/jellyfin-xtream-library_1.38.0.0.zip",
+        "checksum": "0c16441e62a3fb2d0ed2065079e1846d",
+        "timestamp": "2026-06-13T18:00:00Z"
+      },
+      {
+        "version": "1.37.0.0",
+        "changelog": "Adds per-item selection for Movies and Series, matching Live TV per-channel selection. Expand a Movie or Series category to enable or disable individual titles. Resolves #54.",
+        "targetAbi": "10.11.0.0",
+        "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.37.0.0/jellyfin-xtream-library_1.37.0.0.zip",
+        "checksum": "066b9634c107ff53ac47bf3c5e263501",
+        "timestamp": "2026-06-13T17:30:00Z"
+      },
+      {
         "version": "1.36.7.0",
         "changelog": "Adds an in-Jellyfin 'Use beta channel' toggle under Dashboard > Plugins > Xtream Library > Settings > General > Updates. When enabled, the plugin registers its beta plugin manifest URL with Jellyfin's plugin repository list so pre-release versions appear in Dashboard > Plugins > Catalog like any other plugin. Disabling removes the entry. State persists across Jellyfin restarts. This release also rolls up everything previously available only on the beta channel between v1.34.0.0 and v1.36.6.0: multi-provider config UI improvements (#36), live-stream date parsing fixes (#41), three EPG XMLTV parsing bugs (#45), legacy-config recovery for users orphaned by the v1.33.3.0 GUID change (#49), Native Tuner UI duplicate-channel warning (#50), multi-provider Live TV URL construction fix (#46), and Live TV channel counts on the sync status dashboard (#48). See https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases for full per-version notes.",
         "targetAbi": "10.11.0.0",
