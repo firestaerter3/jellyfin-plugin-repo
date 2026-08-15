@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "1.46.1.0",
+                "changelog": "Switching a provider back to Single folder mode keeps your category ticks.\n\nIf you had a provider set to Multiple folder mode and switched it back to Single, the category list came back with every box unticked, even though your categories were still configured. Saving from that screen wrote an empty selection, and an empty selection means \"sync everything\", so a setup meant to cover a handful of categories quietly pulled in the provider's entire catalogue. The list now comes back with the categories you had assigned to your folders already ticked.\n\nThis only affected configurations last saved on 1.44.0.0 or earlier. If you have saved your settings on 1.45.0.0 or later, you were never exposed to it.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.46.1.0/jellyfin-xtream-library_1.46.1.0.zip",
+                "checksum": "058b22efd4acf2e0ce4d073833d4d242",
+                "timestamp": "2026-08-15T08:00:00Z"
+            },
+            {
                 "version": "1.46.0.0",
                 "changelog": "Sync every Live TV channel except the categories you pick.\n\nLive TV used to offer two choices: take every channel your provider has, or tick the categories you want one by one. The second option meant that whenever your provider added a new category, you silently missed it until you happened to notice and tick it. There is now a third option, \"Sync all channels EXCEPT the categories you tick\". Tick the handful you never watch and everything else comes through, including any category your provider adds later. Tick nothing and you get everything. Movies and Series already worked this way; Live TV now matches them. Per-channel exclusions work in the new mode too, so you can still drop individual channels from the categories you are keeping.\n\nSaving the config page could wipe your Live TV category selection. If you opened the plugin settings and saved before the category list had finished loading, or without loading it at all, your selection was quietly replaced with an empty one. In the \"pick specific channels\" mode that meant no channels synced at all. Your saved selection is now left alone unless the list is actually on screen.\n\nLive TV could fail to load channels on some providers. Providers report which categories a channel belongs to in several different formats, and anything other than the most common one caused the whole channel fetch to fail rather than just that one field, which could take out Live TV entirely. All the known formats are now accepted.",
                 "targetAbi": "10.11.0.0",
