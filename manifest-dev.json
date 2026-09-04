@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "1.47.0.0",
+                "changelog": "Your movies and shows arrive with descriptions, cast and artwork.\n\nUntil now the plugin wrote almost nothing alongside each file it created: a title, a year and an ID. Anything Jellyfin's own metadata providers could not identify therefore sat in your library as a bare entry with no poster and no synopsis. Your provider was already sending the plot, genre, cast, director, country, rating, release date, trailer and poster and backdrop images, and the plugin was discarding all of it. That information is now written into the files Jellyfin reads. Posters and backdrops are referenced straight from your provider, so nothing extra is downloaded to your server. Anything Jellyfin can identify on its own is unaffected, its own metadata still takes priority, and any field your provider leaves empty is simply left out rather than written blank. Items also carry the date your provider added them, so Recently added reflects the provider's catalogue; providers report that date in two different formats and both are now understood. Contributed by @andreadegiovine. (#87)",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.47.0.0/jellyfin-xtream-library_1.47.0.0.zip",
+                "checksum": "9adbe69680c4c585a36b8cec589dcfa4",
+                "timestamp": "2026-09-04T15:45:24Z"
+            },
+            {
                 "version": "1.46.1.0",
                 "changelog": "Switching a provider back to Single folder mode keeps your category ticks.\n\nIf you had a provider set to Multiple folder mode and switched it back to Single, the category list came back with every box unticked, even though your categories were still configured. Saving from that screen wrote an empty selection, and an empty selection means \"sync everything\", so a setup meant to cover a handful of categories quietly pulled in the provider's entire catalogue. The list now comes back with the categories you had assigned to your folders already ticked.\n\nThis only affected configurations last saved on 1.44.0.0 or earlier. If you have saved your settings on 1.45.0.0 or later, you were never exposed to it.",
                 "targetAbi": "10.11.0.0",
