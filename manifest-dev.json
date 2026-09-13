@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.0.0",
+                "changelog": "Jellyfin 12 support.\n\nJellyfin 12.0 moved the server to .NET 10, and every plugin has to be rebuilt for it. This is that rebuild. If you are on Jellyfin 12, this is the version you want, and it is the first one that will load at all.\n\nIf you are still on Jellyfin 10.11, nothing changes for you and nothing breaks. Your server will keep installing the 1.x line and will not offer you this one, because the two are built against different servers and are not interchangeable. The 1.x line stops here at 1.55.0.0, so moving to Jellyfin 12 is how you get anything new from now on.\n\nThere are no feature changes. Everything this release does, 1.55.0.0 also does. It was checked on a real Jellyfin 12 server against a 10.11 server running the same configuration, and the plugin loads, the settings page renders and the Live TV endpoints behave identically on both.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.0.0/jellyfin-xtream-library_2.0.0.0.zip",
+                "checksum": "42d09385b04efd2879a7c6c393ff6652",
+                "timestamp": "2026-09-13T18:27:28Z"
+            },
+            {
                 "version": "1.55.0.0",
                 "changelog": "Test Dispatcharr now tests the password you just typed.\n\nTyping a Dispatcharr API password and pressing Test before saving tested the password that was already saved, not the one on screen. It came back red with \"authentication failed\" for credentials that were perfectly correct, and nothing suggested that saving first would change the answer. Type, test, save once it goes green is the obvious way to use a test button, and that order never worked.\n\nIt now sends what is on the form, the way the Test Connection button above it always has. Clearing the Dispatcharr URL and pressing Test now tests the Xtream address, which is what leaving that field empty means, instead of quietly putting the old URL back.\n\nA provider you are setting up for the first time can be tested as well. Before, with nothing saved yet, it answered \"Please configure Base URL first\" about a Base URL sitting on screen in front of you.\n\nNothing else changed, and catch-up, syncing and Live TV are untouched.",
                 "targetAbi": "10.11.0.0",
