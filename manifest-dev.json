@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.1.0",
+                "changelog": "Categories load their items again on Jellyfin 12 (#117).\n\nJellyfin 12 stops accepting the legacy `X-Emby-Token` request header. Two of the configuration page fetch sites still sent it: the Live TV category loader and the Series / VOD content loader. Both now send `Authorization: MediaBrowser Token=` instead, which Jellyfin 12's `CustomAuthentication` middleware expects. The Test connection button was never affected and still works as before. Two-line header swap in `config.js`, no server-side change.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.1.0/jellyfin-xtream-library_2.0.1.0.zip",
+                "checksum": "53dd36cebb7bfb99ce5bf6dc454968d0042152b893976b8387b484f4277d25ce",
+                "timestamp": "2026-09-16T05:25:17Z"
+            },
+            {
                 "version": "2.0.0.0",
                 "changelog": "Jellyfin 12 support.\n\nJellyfin 12.0 moved the server to .NET 10, and every plugin has to be rebuilt for it. This is that rebuild. If you are on Jellyfin 12, this is the version you want, and it is the first one that will load at all.\n\nIf you are still on Jellyfin 10.11, nothing changes for you and nothing breaks. Your server will keep installing the 1.x line and will not offer you this one, because the two are built against different servers and are not interchangeable. The 1.x line stops here at 1.55.0.0, so moving to Jellyfin 12 is how you get anything new from now on.\n\nThere are no feature changes. Everything this release does, 1.55.0.0 also does. It was checked on a real Jellyfin 12 server against a 10.11 server running the same configuration, and the plugin loads, the settings page renders and the Live TV endpoints behave identically on both.",
                 "targetAbi": "12.0.0.0",
