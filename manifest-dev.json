@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.4.0",
+                "changelog": "Request Delay now limits how fast the plugin talks to your provider in total.\n\nFixed: a large sync could send your provider far more requests than Request Delay suggested, enough for some providers to block your IP. The delay was applied separately by each parallel worker, so with Sync Parallelism at 10 and the default of 50 ms, up to 200 requests a second could go out. It is now one shared gap between requests to the same provider: 50 ms means at most 20 a second, however many workers run. When the provider answers that it is getting too many requests, every request to it now waits, not only the one that was refused. A first sync of a large library takes longer as a result. If your provider allows more, lower Request Delay (reported by dillardblom).\n\nFixed: setting Request Delay to 0 was quietly saved as 50. 0 now means no gap.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.4.0/jellyfin-xtream-library_2.0.4.0.zip",
+                "checksum": "c9c5fbf9ea54ccc1863ecb32e4edc5d2",
+                "timestamp": "2026-09-23T22:26:03Z"
+            },
+            {
                 "version": "2.0.2.0",
                 "changelog": "Films your provider missed a request for no longer get a folder of their own, and & shows as & in Live TV.\n\nFixed: with Group movies with the same TMDB id turned on, a film could still end up in a separate folder next to its other versions. If your provider did not answer the plugin's request for one of them during a sync, the plugin found the film by searching its title instead, and an id found that way is never used for grouping, because a title search can give a film and its remake the same one. That copy got its own folder, and since a sync never moves a folder, it stayed there. Such a film is now held back and picked up on the next sync once the provider answers, and it goes into the right folder. The sync log says how many were held back, and they are listed under Failed Items in the meantime. Films already split this way stay split: to fix those, use Delete Movies Library in the Danger Zone and sync again (reported by andreadegiovine).\n\nFixed: a Live TV category or channel with & in its name showed as &amp; in the guide. The same thing broke channel logos whose address contains &, and kept channels whose guide id contains & from finding their programme data. Names now come through exactly as your provider sends them. A double quote in a name becomes a single quote, because the playlist format has no way to carry one (reported by TheBazeman).",
                 "targetAbi": "12.0.0.0",
@@ -30,6 +38,14 @@
                 "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.0.0/jellyfin-xtream-library_2.0.0.0.zip",
                 "checksum": "42d09385b04efd2879a7c6c393ff6652",
                 "timestamp": "2026-09-13T18:27:28Z"
+            },
+            {
+                "version": "1.55.3.0",
+                "changelog": "Request Delay now limits how fast the plugin talks to your provider in total.\n\nFixed: a large sync could send your provider far more requests than Request Delay suggested, enough for some providers to block your IP. The delay was applied separately by each parallel worker, so with Sync Parallelism at 10 and the default of 50 ms, up to 200 requests a second could go out. It is now one shared gap between requests to the same provider: 50 ms means at most 20 a second, however many workers run. When the provider answers that it is getting too many requests, every request to it now waits, not only the one that was refused. A first sync of a large library takes longer as a result. If your provider allows more, lower Request Delay (reported by dillardblom).\n\nFixed: setting Request Delay to 0 was quietly saved as 50. 0 now means no gap.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.55.3.0/jellyfin-xtream-library_1.55.3.0.zip",
+                "checksum": "6479ccccd1d4679222780282babb8cdc",
+                "timestamp": "2026-09-23T22:26:03Z"
             },
             {
                 "version": "1.55.1.0",
