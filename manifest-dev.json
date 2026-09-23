@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.2.0",
+                "changelog": "Films your provider missed a request for no longer get a folder of their own, and & shows as & in Live TV.\n\nFixed: with Group movies with the same TMDB id turned on, a film could still end up in a separate folder next to its other versions. If your provider did not answer the plugin's request for one of them during a sync, the plugin found the film by searching its title instead, and an id found that way is never used for grouping, because a title search can give a film and its remake the same one. That copy got its own folder, and since a sync never moves a folder, it stayed there. Such a film is now held back and picked up on the next sync once the provider answers, and it goes into the right folder. The sync log says how many were held back, and they are listed under Failed Items in the meantime. Films already split this way stay split: to fix those, use Delete Movies Library in the Danger Zone and sync again (reported by andreadegiovine).\n\nFixed: a Live TV category or channel with & in its name showed as &amp; in the guide. The same thing broke channel logos whose address contains &, and kept channels whose guide id contains & from finding their programme data. Names now come through exactly as your provider sends them. A double quote in a name becomes a single quote, because the playlist format has no way to carry one (reported by TheBazeman).",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.2.0/jellyfin-xtream-library_2.0.2.0.zip",
+                "checksum": "6842679c45ff57d71fcf142a4e6f1998",
+                "timestamp": "2026-09-23T07:30:06Z"
+            },
+            {
                 "version": "2.0.1.0",
                 "changelog": "Categories load their items again on Jellyfin 12 (#117).\n\nJellyfin 12 stops accepting the legacy `X-Emby-Token` request header. Two of the configuration page fetch sites still sent it: the Live TV category loader and the Series / VOD content loader. Both now send `Authorization: MediaBrowser Token=` instead, which Jellyfin 12's `CustomAuthentication` middleware expects. The Test connection button was never affected and still works as before. Two-line header swap in `config.js`, no server-side change.",
                 "targetAbi": "12.0.0.0",
@@ -22,6 +30,14 @@
                 "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.0.0/jellyfin-xtream-library_2.0.0.0.zip",
                 "checksum": "42d09385b04efd2879a7c6c393ff6652",
                 "timestamp": "2026-09-13T18:27:28Z"
+            },
+            {
+                "version": "1.55.1.0",
+                "changelog": "Films your provider missed a request for no longer get a folder of their own, and & shows as & in Live TV.\n\nFixed: with Group movies with the same TMDB id turned on, a film could still end up in a separate folder next to its other versions. If your provider did not answer the plugin's request for one of them during a sync, the plugin found the film by searching its title instead, and an id found that way is never used for grouping, because a title search can give a film and its remake the same one. That copy got its own folder, and since a sync never moves a folder, it stayed there. Such a film is now held back and picked up on the next sync once the provider answers, and it goes into the right folder. The sync log says how many were held back, and they are listed under Failed Items in the meantime. Films already split this way stay split: to fix those, use Delete Movies Library in the Danger Zone and sync again (reported by andreadegiovine).\n\nFixed: a Live TV category or channel with & in its name showed as &amp; in the guide. The same thing broke channel logos whose address contains &, and kept channels whose guide id contains & from finding their programme data. Names now come through exactly as your provider sends them. A double quote in a name becomes a single quote, because the playlist format has no way to carry one (reported by TheBazeman).",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.55.1.0/jellyfin-xtream-library_1.55.1.0.zip",
+                "checksum": "5899853275729454e8a7d16ff14e9b40",
+                "timestamp": "2026-09-23T07:30:06Z"
             },
             {
                 "version": "1.55.0.0",
