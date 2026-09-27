@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.5.0",
+                "changelog": "Fixed: a single unreadable value from your provider could make content disappear. Some providers send an empty value where a number belongs. Depending on where it appeared, this blanked a series' title, plot and TMDB id, dropped every episode of a series (whose existing episode files could then be deleted as orphans), or made a whole category fail to sync. Such values are now ignored, or read as 0 where a number is needed, and an item whose ID cannot be read is skipped with a warning in the log while the rest of its category syncs normally (reported by foXaCe).\n\nFixed: when a movie or series was removed by orphan cleanup, its folder stayed behind holding just the NFO and poster, because a folder was only removed when completely empty. Those leftover files are now removed with it, and so are the NFO and thumbnail of each removed episode. Anything else in the folder, such as a subtitle you added yourself, is kept, and so is the folder. Folders left behind by earlier versions are not touched (idea from andreadegiovine).",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.5.0/jellyfin-xtream-library_2.0.5.0.zip",
+                "checksum": "b2ae6fc24dacb8fe2cb41f04cb8c7922",
+                "timestamp": "2026-09-27T07:15:23Z"
+            },
+            {
                 "version": "2.0.4.0",
                 "changelog": "Request Delay now limits how fast the plugin talks to your provider in total.\n\nFixed: a large sync could send your provider far more requests than Request Delay suggested, enough for some providers to block your IP. The delay was applied separately by each parallel worker, so with Sync Parallelism at 10 and the default of 50 ms, up to 200 requests a second could go out. It is now one shared gap between requests to the same provider: 50 ms means at most 20 a second, however many workers run. When the provider answers that it is getting too many requests, every request to it now waits, not only the one that was refused. A first sync of a large library takes longer as a result. If your provider allows more, lower Request Delay (reported by dillardblom).\n\nFixed: setting Request Delay to 0 was quietly saved as 50. 0 now means no gap.",
                 "targetAbi": "12.0.0.0",
