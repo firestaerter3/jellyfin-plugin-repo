@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.6.0",
+                "changelog": "Better movie matching when \"Fallback to Year-Free Lookup\" is on.\n\nNew: when a movie cannot be matched, the plugin now also tries the year from your provider's release date, which helps when the title carries the wrong year (\"13 Geister (2025)\" for a 2001 film), and the provider's original title, which helps when the title is in another language. Both come from information the plugin already fetches. Nothing changes while the setting is off, and movies already in your library keep their folders; only movies added from now on benefit (idea from philx17).\n\nFixed: when the year-free retry had found a match, a later lookup of the same title could come back empty, because the failed first search was cached and answered straight away. Each search now has its own cache entry.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.6.0/jellyfin-xtream-library_2.0.6.0.zip",
+                "checksum": "18c6ba27ee059d53de85bdc450871d94",
+                "timestamp": "2026-09-27T07:39:47Z"
+            },
+            {
                 "version": "2.0.5.0",
                 "changelog": "Fixed: a single unreadable value from your provider could make content disappear. Some providers send an empty value where a number belongs. Depending on where it appeared, this blanked a series' title, plot and TMDB id, dropped every episode of a series (whose existing episode files could then be deleted as orphans), or made a whole category fail to sync. Such values are now ignored, or read as 0 where a number is needed, and an item whose ID cannot be read is skipped with a warning in the log while the rest of its category syncs normally (reported by foXaCe).\n\nFixed: when a movie or series was removed by orphan cleanup, its folder stayed behind holding just the NFO and poster, because a folder was only removed when completely empty. Those leftover files are now removed with it, and so are the NFO and thumbnail of each removed episode. Anything else in the folder, such as a subtitle you added yourself, is kept, and so is the folder. Folders left behind by earlier versions are not touched (idea from andreadegiovine).",
                 "targetAbi": "12.0.0.0",
