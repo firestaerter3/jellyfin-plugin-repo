@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.8.0",
+                "changelog": "Fixed: changing Folder Mode, or moving a category to another folder, left every moved movie or episode in your library twice. The old copies were held back by the orphan safety limit, and because they never went away, orphan cleanup then stayed blocked on every later sync, including for items that really were removed by your provider. Copies of items that were only moved are now removed regardless of that limit, while anything that actually disappeared is still protected by it. If this already happened to you, the first sync after updating cleans it up, as long as orphan cleanup is on. Moved items still lose their watched status, because Jellyfin sees a new folder as a new item; the Folder Mode setting now says so (reported in andreadegiovine's fork).",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.8.0/jellyfin-xtream-library_2.0.8.0.zip",
+                "checksum": "97a0eff1310784ed85a51ae75223c2d6",
+                "timestamp": "2026-09-27T08:34:59Z"
+            },
+            {
                 "version": "2.0.7.0",
                 "changelog": "If you use Live TV with the Native Tuner only, open the Live TV tab and turn off the new \"Publish Playlists\" switch. It stays on after this update for anyone who already had Live TV enabled, so an M3U tuner or TiviMate setup keeps working, but the native tuner does not need it.\n\nNew: \"Publish Playlists\" controls whether the M3U and Catch-up M3U URLs are served at all. Both contain your Xtream username and password in every stream line and are reachable without a Jellyfin login, so anyone who can reach them gets your provider account. Only Jellyfin's M3U tuner and external players read them. While the switch is off they answer as if they did not exist. It is off when you enable Live TV from now on. The EPG URL and channel logos are not affected (proposed by dillardblom).\n\nNew: \"Restrict These URLs To\" limits the Live TV URLs to the IP addresses or ranges you list, one per line. Leave it empty for no restriction. If you fill it in, your own server has to be on the list too, or the guide goes empty (written by dillardblom).",
                 "targetAbi": "12.0.0.0",
