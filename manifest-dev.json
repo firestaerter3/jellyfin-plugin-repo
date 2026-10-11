@@ -379,9 +379,9 @@
     },
     {
         "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-        "name": "Xtream Library (Dev)",
-        "description": "EXPERIMENTAL: Sync Xtream VOD and Series content to native Jellyfin libraries via STRM files. Includes native tuner (may cause playback regression).",
-        "overview": "Development channel for Xtream Library plugin. Contains experimental features like native tuner host. Add this manifest URL to test pre-release builds.",
+        "name": "Xtream Library (old entry, install the other one)",
+        "description": "Old catalogue entry, no longer updated. Install the \"Xtream Library (Dev)\" entry instead.",
+        "overview": "This entry stopped at 1.33.2.0. All updates since then are published under the \"Xtream Library (Dev)\" entry in this catalogue. Uninstall this one and install that one.",
         "owner": "firestaerter3",
         "category": "General",
         "versions": [
