@@ -315,9 +315,9 @@
   },
   {
     "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "name": "Xtream Library",
-    "description": "Sync Xtream VOD and Series content to native Jellyfin libraries via STRM files for universal client compatibility.",
-    "overview": "Creates STRM files from Xtream content for native library integration - works with all clients including Swiftfin.",
+    "name": "Xtream Library (old entry, install the other one)",
+    "description": "Old catalogue entry, no longer updated. Install the other \"Xtream Library\" entry instead.",
+    "overview": "This entry stopped at 1.33.2.0. All updates since then are published under the other \"Xtream Library\" entry in this catalogue. Uninstall this one and install that one.",
     "owner": "firestaerter3",
     "category": "General",
     "versions": [
