@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.12.0",
+                "changelog": "If you use Dispatcharr Mode: series episodes could fail to play with a 404 from Dispatcharr, and in some setups a series could show another series' episodes. The plugin read series from Dispatcharr's own API, which numbers series and episodes differently from the Xtream API that plays them. Series now come from the Xtream API, as without Dispatcharr Mode. The first sync after updating re-reads every series once to correct the files already written, so it takes longer than usual. Files keep their names, so watched status is kept (reported by ztark12).\n\nFixed: with Live TV through an M3U tuner and Epg.xml as the guide, channels whose name starts with a number, such as \"24 Kitchen\" or \"3sat\", got no guide. Epg.xml now carries each channel's number, so Jellyfin matches every channel. Jellyfin keeps its own copy of the guide file, so this shows after the next guide refresh.\n\nFixed: Jellyfin's log no longer contains your provider username and password. They were in the stream address logged each time a channel was opened, and in provider errors and retries. If you have posted a log from an earlier version somewhere public, consider asking your provider for a new password.\n\nFixed: when the provider could not deliver a series during a sync, orphan cleanup deleted that series' files. They are now kept until the provider answers again.\n\nFixed: errors from LiveTv.m3u, Catchup.m3u and Epg.xml (for example \"Live TV is not enabled\") arrived as an empty \"406 Not Acceptable\". They now come with their real status and message.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.12.0/jellyfin-xtream-library_2.0.12.0.zip",
+                "checksum": "337df7fba042454875a9f22b6c0c8987",
+                "timestamp": "2026-10-13T21:38:26Z"
+            },
+            {
                 "version": "2.0.11.0",
                 "changelog": "Fixed: with Live TV set up on two or more providers, the guide never used your providers' XMLTV files. They were combined into one file that could not be read past the first provider, so the guide always fell back to the simpler per-channel listings and lost categories, ratings and the other details XMLTV carries. Each provider's file is now read on its own. If one provider's file is missing or broken, only that provider's channels fall back, and the others keep their full guide (found and fixed by dillardblom).\n\nFixed: when two providers used the same guide id for different channels, one of them got no guide, or showed the other provider's programmes. Guide ids are now matched per provider (reported by dillardblom).",
                 "targetAbi": "12.0.0.0",
