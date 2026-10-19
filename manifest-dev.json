@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.15.0",
+                "changelog": "Live TV with the native tuner and Dispatcharr starts channels faster. The plugin now reads the stream details Dispatcharr already recorded, so Jellyfin no longer analyses each channel before playing it. This needs Stream Format TS; with HLS selected channels play as before.\n\nChannels matched to Dispatcharr now play from Dispatcharr's own channel URL, which carries no login. Apps that open the stream address themselves (Swiftfin with the VLC player, Moonfin) no longer receive your provider username and password.\n\nFixed: on iOS, a channel could stop with error -1100 right after starting, when the app opened it twice and then closed the first session.\n\nFixed: some channels showed every programme twice in the guide, overlapping, when the provider's guide listed that channel twice.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.15.0/jellyfin-xtream-library_2.0.15.0.zip",
+                "checksum": "f55ee39f0b7c9a5797a713457eaf1686",
+                "timestamp": "2026-10-19T16:32:00Z"
+            },
+            {
                 "version": "2.0.14.0",
                 "changelog": "Settings page reorganised. A new Provider tab holds everything for one provider: login, library path, title cleaning, Dispatcharr and the Delete buttons. General keeps the settings all providers share, and options few people need are folded away under Provider tuning, Advanced and Live TV tuning. Your settings are kept as they are.\n\nLive TV: the Enable Native Tuner checkbox is now a choice between the native tuner and your own M3U tuner. Choosing the M3U tuner turns Publish Playlists on, since that tuner reads the playlist. Settings that depend on Live TV or catch-up are hidden while those are off. The Delete buttons now say which folder goes and that watched status, favourites and resume points are lost.\n\nFixed: saving while the Movies or Series category list had not loaded yet (provider unreachable or slow) cleared your category selection, so the next sync fetched every category.\n\nFixed: a daily sync set to midnight was moved to 03:00 on every save.\n\nFixed: Retry did nothing after Delete Movies/Series Library, while reporting success. Retry now runs a normal sync in the background, and a second sync can no longer start while one is running. The Full Sync Change Threshold setting has been removed.",
                 "targetAbi": "12.0.0.0",
