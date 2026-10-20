@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.16.0",
+                "changelog": "Security: two fixes for text that comes from the provider.\n\nFixed: a movie or series title, category name or error message from the provider could contain code that ran in your browser, with your admin session, while the plugin's settings page was open. Such text is now shown as plain text.\n\nFixed: a poster or cover address from the provider was written into the NFO files as is. Jellyfin reads a file path there as a local image, so a provider could have a file from your server shown as an item's image. Only http and https addresses are written now. NFO files that already exist are not rewritten.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.16.0/jellyfin-xtream-library_2.0.16.0.zip",
+                "checksum": "55de665f528037b3c2df57ccdcacaa49",
+                "timestamp": "2026-10-20T07:34:03Z"
+            },
+            {
                 "version": "2.0.15.0",
                 "changelog": "Live TV with the native tuner and Dispatcharr starts channels faster. The plugin now reads the stream details Dispatcharr already recorded, so Jellyfin no longer analyses each channel before playing it. This needs Stream Format TS; with HLS selected channels play as before.\n\nChannels matched to Dispatcharr now play from Dispatcharr's own channel URL, which carries no login. Apps that open the stream address themselves (Swiftfin with the VLC player, Moonfin) no longer receive your provider username and password.\n\nFixed: on iOS, a channel could stop with error -1100 right after starting, when the app opened it twice and then closed the first session.\n\nFixed: some channels showed every programme twice in the guide, overlapping, when the provider's guide listed that channel twice.",
                 "targetAbi": "12.0.0.0",
