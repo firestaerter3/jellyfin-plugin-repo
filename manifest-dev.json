@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.17.0",
+                "changelog": "Security: more checks on what the provider sends.\n\nArtwork downloads stop at 20 MB and after 30 seconds, and a page that is not an image is no longer saved as a poster.\n\nA movie or series title of only dots, such as \"..\", is now named Unknown. Before, its files ended up next to the Movies or Series folder. Very long titles no longer slow the sync down.\n\nOdd control characters in a title or programme no longer make an NFO file or the Epg.xml guide unreadable for Jellyfin.\n\nWith Dispatcharr: a channel or movie id that is not a valid uuid is now ignored instead of being written into the playlist and stream addresses.\n\nFixed: with a provider address ending in /live, /movie or /series, the plugin's log could show your provider password.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.17.0/jellyfin-xtream-library_2.0.17.0.zip",
+                "checksum": "9141163e12b6551b714513d738d1aae9",
+                "timestamp": "2026-10-21T22:19:13Z"
+            },
+            {
                 "version": "2.0.16.0",
                 "changelog": "Security: two fixes for text that comes from the provider.\n\nFixed: a movie or series title, category name or error message from the provider could contain code that ran in your browser, with your admin session, while the plugin's settings page was open. Such text is now shown as plain text.\n\nFixed: a poster or cover address from the provider was written into the NFO files as is. Jellyfin reads a file path there as a local image, so a provider could have a file from your server shown as an item's image. Only http and https addresses are written now. NFO files that already exist are not rewritten.",
                 "targetAbi": "12.0.0.0",
