@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.19.0",
+                "changelog": "Fixed: with Smart Skip on (the default), every other full sync asked the provider for the details of almost every series again, thousands of requests on a large catalogue. A series that was skipped kept no episode count, so the next full sync treated it as unknown. The count is now kept while the series is unchanged, which matters most for providers that allow one connection or block on bursts (contributed by luisgsluis).",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.19.0/jellyfin-xtream-library_2.0.19.0.zip",
+                "checksum": "ead0d38dd9772124ebe9729457cda8cd",
+                "timestamp": "2026-10-24T22:54:13Z"
+            },
+            {
                 "version": "2.0.18.0",
                 "changelog": "Fixed: when the provider briefly answered with an empty list, the sync removed those movies or series and the next sync added them back, losing watched status and artwork in between. An empty answer is now asked again a few times, with the same waiting time as other provider errors, before it is accepted. A category that is really empty still ends up empty, but now takes a few seconds longer to sync (contributed by andreadegiovine).",
                 "targetAbi": "12.0.0.0",
