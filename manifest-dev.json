@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.18.0",
+                "changelog": "Fixed: when the provider briefly answered with an empty list, the sync removed those movies or series and the next sync added them back, losing watched status and artwork in between. An empty answer is now asked again a few times, with the same waiting time as other provider errors, before it is accepted. A category that is really empty still ends up empty, but now takes a few seconds longer to sync (contributed by andreadegiovine).",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.18.0/jellyfin-xtream-library_2.0.18.0.zip",
+                "checksum": "fcc5184cc243745dd9108fdb6da4cdba",
+                "timestamp": "2026-10-24T10:54:52Z"
+            },
+            {
                 "version": "2.0.17.0",
                 "changelog": "Security: more checks on what the provider sends.\n\nArtwork downloads stop at 20 MB and after 30 seconds, and a page that is not an image is no longer saved as a poster.\n\nA movie or series title of only dots, such as \"..\", is now named Unknown. Before, its files ended up next to the Movies or Series folder. Very long titles no longer slow the sync down.\n\nOdd control characters in a title or programme no longer make an NFO file or the Epg.xml guide unreadable for Jellyfin.\n\nWith Dispatcharr: a channel or movie id that is not a valid uuid is now ignored instead of being written into the playlist and stream addresses.\n\nFixed: with a provider address ending in /live, /movie or /series, the plugin's log could show your provider password.",
                 "targetAbi": "12.0.0.0",
