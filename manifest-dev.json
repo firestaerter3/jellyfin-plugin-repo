@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.20.0",
+                "changelog": "Live TV with the native tuner: the programme guide now sets itself up. With Live TV, Native Tuner and EPG on, the plugin adds its EPG URL under Dashboard > Live TV > TV Guide Data Providers, so you no longer copy it there by hand. A guide source you added yourself is kept and used as it is (suggested by aanyberg).\n\nCatch-up: older days now show the real programme titles instead of half-hour blocks. Providers send about a day of past guide, while their archive goes back several days, so the plugin now keeps the guide it already receives for channels with catch-up. No extra requests are made (contributed by dillardblom).\n\nArtwork: a host that does not answer no longer holds up the sync. Downloads give up after 3 seconds without a connection or 15 seconds in total, and after five failures in a row the rest of that host's images are skipped for that sync (thanks to wikidone for the report and ideas).\n\nThe settings page now warns when Jellyfin also has an M3U tuner reading the plugin's playlist next to the native tuner, which shows every channel twice.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.20.0/jellyfin-xtream-library_2.0.20.0.zip",
+                "checksum": "a95dafe61498dd025a8361e3c3502829",
+                "timestamp": "2026-10-25T02:21:07Z"
+            },
+            {
                 "version": "2.0.19.0",
                 "changelog": "Fixed: with Smart Skip on (the default), every other full sync asked the provider for the details of almost every series again, thousands of requests on a large catalogue. A series that was skipped kept no episode count, so the next full sync treated it as unknown. The count is now kept while the series is unchanged, which matters most for providers that allow one connection or block on bursts (contributed by luisgsluis).",
                 "targetAbi": "12.0.0.0",
