@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.22.0",
+                "changelog": "New, off by default: Live TV can tag each channel with its category (with Dispatcharr: the channel group), so an account can be limited to one category with Jellyfin's allowed tags, for example a children's account that only sees the Kids group. Turn it on under Live TV, \"Tag channels with their category\", then refresh the guide. With it on, Jellyfin replaces each channel's tags on every guide refresh, so tags set by hand are lost; tags in Channel Overrides win, which is how a single channel is kept out of its group. If the category list cannot be loaded, channels get no category tag for that refresh, so a limited account sees fewer channels, never more. Turning the option off again leaves the category tags on the channels until you remove them.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.22.0/jellyfin-xtream-library_2.0.22.0.zip",
+                "checksum": "066c115ebe00b6d2c65686784d880c11",
+                "timestamp": "2026-10-26T09:07:13Z"
+            },
+            {
                 "version": "2.0.21.0",
                 "changelog": "Fixed: when a category failed to load or came back empty although it had items in the last sync, its movies and series were deleted and added back on the next sync, losing watched status and artwork in between. Their files are now kept until the category answers again, or for up to the Full Sync Interval if it stays empty, after which they are cleaned up as before. This also covers a selected category missing from the provider's category list. The last sync on the settings page says how many items were kept.\n\nFixed: after switching Dispatcharr Mode off, Live TV kept using Dispatcharr's addresses until the stored channel list was deleted by hand. It now uses the provider addresses again at once.\n\nLive TV with Dispatcharr: channels now tell apps their real video profile and level, and the number of audio channels. Before, Jellyfin announced every H.264 channel as Baseline and re-encoded stereo audio to 5.1.\n\nFor testing: apps that play MPEG-TS themselves (Swiftfin with its own player, Infuse) can play Dispatcharr channels directly, without Jellyfin in between. This is off by default and not on the settings page; it is the setting LiveTvDirectPlayDispatcharr.",
                 "targetAbi": "12.0.0.0",
