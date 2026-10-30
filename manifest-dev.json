@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.24.0",
+                "changelog": "Movies that share a title and have no TMDB id are no longer dropped after the first one. They are kept in the same folder: one keeps the folder's name, the others get their stream id added (\"Title (2024) - 12345.strm\"), so Jellyfin shows them as versions of one movie. When the one with the folder's name leaves the provider, another takes its name. Files you already have keep their names; the next sync is a full sync and adds the movies that were skipped before.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.24.0/jellyfin-xtream-library_2.0.24.0.zip",
+                "checksum": "cb5f80b4bb706c2e1afd95b879c71929",
+                "timestamp": "2026-10-30T12:44:00Z"
+            },
+            {
                 "version": "1.55.5.0",
                 "changelog": "For Jellyfin 10.11.\n\nFixed: with Automatic Metadata ID Lookup on, most series without an ID from the provider were never matched, because only the first search result was checked and that is usually TheMovieDb's, which has no TVDb ID. The lookup now uses the first result that has the ID, prefers one from the same year, and the next sync searches again the series an earlier sync could not match, so there is no need to clear the metadata cache. Movies get the same fix.\n\nA language prefix like \"EN - \" at the start of a title is now removed, like \"| EN |\" already was.",
                 "targetAbi": "10.11.0.0",
