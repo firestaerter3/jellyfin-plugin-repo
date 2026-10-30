@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "1.55.5.0",
+                "changelog": "For Jellyfin 10.11.\n\nFixed: with Automatic Metadata ID Lookup on, most series without an ID from the provider were never matched, because only the first search result was checked and that is usually TheMovieDb's, which has no TVDb ID. The lookup now uses the first result that has the ID, prefers one from the same year, and the next sync searches again the series an earlier sync could not match, so there is no need to clear the metadata cache. Movies get the same fix.\n\nA language prefix like \"EN - \" at the start of a title is now removed, like \"| EN |\" already was.",
+                "targetAbi": "10.11.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v1.55.5.0/jellyfin-xtream-library_1.55.5.0.zip",
+                "checksum": "a13e325ee2feb3f19f682ff46d5c97a0",
+                "timestamp": "2026-10-30T08:11:26Z"
+            },
+            {
                 "version": "2.0.23.0",
                 "changelog": "Fixed: with Automatic Metadata ID Lookup on, most series without an ID from the provider were never matched, because only the first search result was checked and that is usually TheMovieDb's, which has no TVDb ID. The lookup now uses the first result that has the ID, prefers one from the same year, and the next sync searches again the series an earlier sync could not match, so there is no need to clear the metadata cache. Movies get the same fix.\n\nA language prefix like \"EN - \" at the start of a title is now removed, like \"| EN |\" already was.",
                 "targetAbi": "12.0.0.0",
