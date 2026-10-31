@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.25.0",
+                "changelog": "Fixed: after you changed your provider password or username, the movie and series files kept the old login until the next full sync, and series episodes even after that, so they stopped playing once the old password was gone. The next sync after a login change is now a full sync that rewrites every file with the new login.\n\nRemove now also works on the only provider. It is replaced by an empty one with the same library path, so you can switch to another provider from scratch: fill in the new provider and click Save. The files already in the library are not removed at that moment; use Delete Movies/Series Library first if you want a clean start.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.25.0/jellyfin-xtream-library_2.0.25.0.zip",
+                "checksum": "85d17916cbeb7f079db4f0312a0efec3",
+                "timestamp": "2026-10-31T13:24:45Z"
+            },
+            {
                 "version": "2.0.24.0",
                 "changelog": "Movies that share a title and have no TMDB id are no longer dropped after the first one. They are kept in the same folder: one keeps the folder's name, the others get their stream id added (\"Title (2024) - 12345.strm\"), so Jellyfin shows them as versions of one movie. When the one with the folder's name leaves the provider, another takes its name. Files you already have keep their names; the next sync is a full sync and adds the movies that were skipped before.",
                 "targetAbi": "12.0.0.0",
