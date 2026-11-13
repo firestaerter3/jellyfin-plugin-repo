@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.29.0",
+                "changelog": "New: an optional badge on the posters of the movies, series, seasons and episodes this plugin creates, so a title in search results can be told apart from the same title in another library. Off by default; switch it on under Metadata with \"Show a badge on posters\". You can set the text (default IPTV), the corner (default bottom right) and which item types get it. The badge is drawn while the image is served, so your image files are not changed, and switching it off shows the plain posters again without a restart.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.29.0/jellyfin-xtream-library_2.0.29.0.zip",
+                "checksum": "e8ff7cda182dd158e7d97f92f28c2eb1",
+                "timestamp": "2026-11-13T18:00:33Z"
+            },
+            {
                 "version": "2.0.28.0",
                 "changelog": "New: when the guide gives a show or series a wide image, the plugin uses the portrait poster of the same image if the image source (Gracenote) has one, so it is no longer cropped in poster rows such as On Now. Each image is checked once and the answer is remembered. Switch it off under Live TV with \"Prefer portrait program images\".",
                 "targetAbi": "12.0.0.0",
