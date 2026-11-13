@@ -668,6 +668,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.1.0",
+                "changelog": "Random pause between probes (cooldown + random 0..jitter), random order per run (on by default), random start delay for scheduled runs.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/JellySTRMprobe/releases/download/v2.0.1.0/jellystrm-probe_2.0.1.0.zip",
+                "checksum": "4b4e6bafd4c43337ba5830196216f3e0",
+                "timestamp": "2026-11-13T07:15:00Z"
+            },
+            {
                 "version": "2.0.0.0",
                 "changelog": "Beta for Jellyfin 12. Already probed STRM items start without Jellyfin's probe and metadata refresh (about 10 s per start). Safer probing: one at a time, 2 s pause, at most 500 per run, stop after 10 failures in a row, wait while a STRM item plays. No default schedule; catch-up off by default and limited to the selected libraries.",
                 "targetAbi": "12.0.0.0",
