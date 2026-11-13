@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.31.0",
+                "changelog": "Fixed: the poster badge looked blurry on posters with a small picture, because the client enlarges such a picture to fill the card. The badge is now drawn at the size the client shows the poster, so it is sharp. The picture itself stays as sharp as its source. Clients fetch the badged posters once more after the update.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.31.0/jellyfin-xtream-library_2.0.31.0.zip",
+                "checksum": "814b0c13972ed3e7ff670afc8ad868bd",
+                "timestamp": "2026-11-13T22:15:32Z"
+            },
+            {
                 "version": "2.0.30.0",
                 "changelog": "Fixed: the poster badge was cut off on movies and series whose poster is a wide picture, because a poster card only shows the middle of such an image. The badge now sits in the visible middle part. Episode images keep the badge in the corner. Clients fetch the badged posters once more after the update.",
                 "targetAbi": "12.0.0.0",
