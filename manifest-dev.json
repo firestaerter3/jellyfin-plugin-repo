@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.33.0",
+                "changelog": "Note before turning the new setting on: language labels rename every movie file of the provider, films with a single version included. Jellyfin sees a renamed file as a new item, so watched status, favourites and resume points of those movies are lost. New, on the Movies tab with \"Group movies with the same TMDB id into one folder\" on: language labels for movie versions. Each rule (regex=LABEL) is matched against the provider's category names, so a film carried once per language shows as versions like \"DE\" and \"EN\" instead of identical names. A default label covers streams no rule matches. Leave both empty (the default) and nothing changes. With Dispatcharr the old unlabelled files cannot be attributed and stay next to the labelled ones until a full sync with orphan cleanup runs. Rules that are not valid are logged as a warning. Thanks to Infrecon for this feature.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.33.0/jellyfin-xtream-library_2.0.33.0.zip",
+                "checksum": "a3d150bca8c17ec0b4eb4927d4b326a8",
+                "timestamp": "2026-11-20T19:45:05Z"
+            },
+            {
                 "version": "2.0.32.0",
                 "changelog": "Fixed: in Live TV channel selection, ticking one channel in a category that was not selected brought in the whole category after saving. Now only that channel is added. In \"Exclude selected categories\" mode the channel checkboxes also showed the wrong state; a ticked channel now means it syncs, in both modes. New, under Live TV: \"Treat live channels as a local source\" (off by default), for users with \"Force transcoding of remote media sources\" on. It lets Jellyfin copy live audio and video again instead of re-encoding them, but remote clients with a low bitrate limit may then get the whole stream transcoded. New: \"Include program images in the guide\" (on by default). Jellyfin keeps a copy of every program image per program in its metadata/livetv folder, which can grow by gigabytes a day when Refresh Guide does not finish. Turn this off to leave program images out of the guide; channel logos stay.",
                 "targetAbi": "12.0.0.0",
