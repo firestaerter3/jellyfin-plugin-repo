@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "2.0.34.0",
+                "changelog": "Note if you named folders yourself: only an id such as [tmdbid-123], [tvdbid-123] or [imdbid-tt123] at the end of a folder name is ignored when the plugin looks for an existing folder. A folder you named with another bracket, such as \"Show [1080p]\", is no longer recognised as \"Show\", so the next sync makes a new folder for it, and the files in the old one count as orphans.\n\nFixed: a series whose title ends in a bracket, such as \"Show [MULTI-SUB]\", was read again from the provider on every incremental sync, which could mean thousands of extra requests.\n\nFixed: a movie or series called \"Show\" could be written into the folder of \"Show [MULTI-SUB]\". Each now gets its own folder.",
+                "targetAbi": "12.0.0.0",
+                "sourceUrl": "https://github.com/firestaerter3/Jellyfin-Xtream-Library/releases/download/v2.0.34.0/jellyfin-xtream-library_2.0.34.0.zip",
+                "checksum": "9d9932e46af675aa6f9cede0d72f0dfa",
+                "timestamp": "2026-11-25T21:09:45Z"
+            },
+            {
                 "version": "2.0.33.0",
                 "changelog": "Note before turning the new setting on: language labels rename every movie file of the provider, films with a single version included. Jellyfin sees a renamed file as a new item, so watched status, favourites and resume points of those movies are lost. New, on the Movies tab with \"Group movies with the same TMDB id into one folder\" on: language labels for movie versions. Each rule (regex=LABEL) is matched against the provider's category names, so a film carried once per language shows as versions like \"DE\" and \"EN\" instead of identical names. A default label covers streams no rule matches. Leave both empty (the default) and nothing changes. With Dispatcharr the old unlabelled files cannot be attributed and stay next to the labelled ones until a full sync with orphan cleanup runs. Rules that are not valid are logged as a warning. Thanks to Infrecon for this feature.",
                 "targetAbi": "12.0.0.0",
